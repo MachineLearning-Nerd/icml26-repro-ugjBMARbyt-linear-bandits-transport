@@ -1,0 +1,40 @@
+{
+  "c1_fourier_reduction": {
+    "passed": true,
+    "shape": [
+      20,
+      8
+    ]
+  },
+  "c2_regret_bound": {
+    "passed": true,
+    "regret": 3.6332268824556495,
+    "bound": 157.69091414643856
+  },
+  "c3_sublinear": {
+    "passed": true,
+    "regrets": [
+      1.30497321038978,
+      5.389410326728578,
+      2.7601130954597086
+    ]
+  },
+  "c4_finite_dim": {
+    "passed": true,
+    "regrets_by_N": [
+      2.4731049957932463,
+      5.816372868013927,
+      9.810383127014394
+    ]
+  },
+  "c5_decay": {
+    "passed": true,
+    "r_fast": 11.614568208723156,
+    "r_slow": 18.409201283756673
+  },
+  "c6_confidence": {
+    "passed": true,
+    "regret_start": 0.0,
+    "regret_end": 1.7460359701055008
+  }
+}
