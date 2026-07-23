@@ -14,6 +14,7 @@ import time
 from pathlib import Path
 
 from claim1_fourier import evaluate_literal_counterexample
+from claim6_confidence import evaluate_confidence_contract
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -94,13 +95,13 @@ def run() -> int:
     (ARTIFACT / "exact_command.txt").write_text(COMMAND + "\n", encoding="utf-8")
 
     assumptions_ok = all(result["assumptions"].values())
-    falsified = (
+    claim1_falsified = (
         assumptions_ok
         and result["identity"]["absolute_residual"] > 0.49
         and result["isometry"]["squared_norm_residual"] > 0.99
         and negative_record["passed"]
     )
-    verdict = "FALSIFIED" if falsified else "BLOCKED"
+    verdict = "FALSIFIED" if claim1_falsified else "BLOCKED"
     summary = {
         "claim_id": 1,
         "verdict": verdict,
@@ -128,7 +129,100 @@ def run() -> int:
         f"negative_control={str(negative_record['passed']).lower()} "
         f"git_sha={git_sha}"
     )
-    return 0 if falsified else 1
+
+    claim6_artifact = ROOT / ".openresearch" / "artifacts" / "claim_6"
+    claim6_artifact.mkdir(parents=True, exist_ok=True)
+    claim6 = evaluate_confidence_contract()
+    (claim6_artifact / "raw_result.json").write_text(
+        json.dumps(claim6, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    independent6_path = claim6_artifact / "independent_checker_output.json"
+    independent6 = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).with_name("check_claim6_independent.py")),
+            "--output",
+            str(independent6_path),
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if independent6.returncode != 0:
+        print(independent6.stdout)
+        print(independent6.stderr, file=sys.stderr)
+        raise RuntimeError("independent claim-6 checker disagreed with the evidence")
+
+    negative6 = {
+        "control": "use five percent of the corrected confidence radius",
+        "expected": "at least one exhaustive Rademacher path leaves the set",
+        "observed_coverage": claim6["corrected_oful_control"][
+            "undersized_beta_coverage"
+        ],
+        "passed": claim6["corrected_oful_control"]["undersized_beta_coverage"]
+        < 1.0,
+    }
+    (claim6_artifact / "negative_control_output.json").write_text(
+        json.dumps(negative6, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    claim6_falsified = (
+        all(claim6["assumptions"].values())
+        and claim6["transport_model_contradiction"]["identical_features"]
+        and claim6["transport_model_contradiction"]["mean_gap"] > 0.99
+        and not claim6["printed_width"]["addition_is_defined"]
+        and claim6["corrected_oful_control"]["determinant_lemma_residual"] < 1e-12
+        and claim6["corrected_oful_control"]["exact_coverage"] >= 0.9
+        and negative6["passed"]
+    )
+    claim6_verdict = "FALSIFIED" if claim6_falsified else "BLOCKED"
+    claim6_summary = {
+        "claim_id": 6,
+        "verdict": claim6_verdict,
+        "assumptions_satisfied": all(claim6["assumptions"].values()),
+        "identical_action_features": claim6["transport_model_contradiction"][
+            "identical_features"
+        ],
+        "different_expected_feedback_gap": claim6[
+            "transport_model_contradiction"
+        ]["mean_gap"],
+        "printed_equation_12_defined": claim6["printed_width"][
+            "addition_is_defined"
+        ],
+        "corrected_formula_exact_coverage": claim6["corrected_oful_control"][
+            "exact_coverage"
+        ],
+        "negative_control_failed_as_intended": negative6["passed"],
+        "independent_checker_exit_code": independent6.returncode,
+    }
+    (claim6_artifact / "verdict.json").write_text(
+        json.dumps(claim6_summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    claim6_environment = dict(environment)
+    claim6_environment["wall_seconds"] = time.perf_counter() - started
+    claim6_environment["exhaustive_noise_paths"] = claim6[
+        "corrected_oful_control"
+    ]["noise_paths"]
+    (claim6_artifact / "environment.json").write_text(
+        json.dumps(claim6_environment, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    (claim6_artifact / "exact_command.txt").write_text(
+        COMMAND + "\n", encoding="utf-8"
+    )
+    print("CLAIM 6 — literal confidence-set contract")
+    print(json.dumps(claim6_summary, indent=2, sort_keys=True))
+    print(
+        "ORX_EVAL "
+        f"claim_6_verdict={claim6_verdict} "
+        f"feature_collision={str(claim6_summary['identical_action_features']).lower()} "
+        f"feedback_gap={claim6_summary['different_expected_feedback_gap']:.17g} "
+        f"eq12_defined={str(claim6_summary['printed_equation_12_defined']).lower()} "
+        f"corrected_coverage={claim6_summary['corrected_formula_exact_coverage']:.17g} "
+        f"negative_control={str(negative6['passed']).lower()} "
+        f"git_sha={git_sha}"
+    )
+    return 0 if claim1_falsified and claim6_falsified else 1
 
 
 if __name__ == "__main__":
