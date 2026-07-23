@@ -14,6 +14,11 @@ Assessment: all six **literal v1** contracts are `FALSIFIED`. This is not a
 claim that repaired OFUL or unitary-Fourier results are false, and it is not a
 new live judge score. The current arXiv v2 changes several statements.
 
+Published evidence:
+[`DineshAI/ugjBMARbyt@1373e021`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a).
+The exact 96-file text payload is awaiting live-judge evaluation; the last
+evaluated score remains 5/12 at the prior revision `e062355b`.
+
 Headline paper-versus-observed numbers:
 
 - Equation (7) predicts equality; observed exact residual: `1/2`.
@@ -40,7 +45,7 @@ or the [self-contained marimo tutorial](notebooks/entucb_claim_audit.py).
 
 | Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
 |---|---|---|---|---|
-| `master` | Publication surface | Not run as an experiment (publication surface) | Validated starting point `e8a15a8`; pending release merge | — |
+| `master` | Publication surface | Not run as an experiment (publication surface) | Mirrors final evidence and HF revision `1373e021`; awaiting judge | — |
 | [`orx/frozen-judged-code-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/frozen-judged-code-baseline) | Freeze judged code and lock `uv` | `uv run python repro/src/verify_entucb.py` | Reproduced historical toy output; no claim upgraded | local CPU, 10 s |
 | [`orx/literal-v1-fourier-contract`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/literal-v1-fourier-contract) | Literal Fourier counterexample | `uv run python repro/src/verify_entucb.py` | Claim 1 `FALSIFIED` | local CPU |
 | [`orx/unitary-discrete-fourier-specialization`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/unitary-discrete-fourier-specialization) | Corrected transform control | `uv run python repro/src/verify_entucb.py` | Corrected specialization verified; literal claim blocked | local CPU |
@@ -49,7 +54,7 @@ or the [self-contained marimo tutorial](notebooks/entucb_claim_audit.py).
 | [`orx/regret-theorem-definition-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/regret-theorem-definition-audit) | Full Theorems 5.1–5.2 terms | `uv run python repro/src/verify_entucb.py` | All six literal v1 claims `FALSIFIED` | local CPU, 45 s |
 | [`orx/release-candidate-cumulative-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/release-candidate-cumulative-evidence) | Reports, notebook, additive Space candidate, internal release gates | `uv run python repro/src/verify_entucb.py` | All six `FALSIFIED`; internal gate passed; external subset check was still pending | local CPU, 65 s |
 | [`orx/publication-snapshot-and-full-release-gate`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/publication-snapshot-and-full-release-gate) | Materialized evidence, five figures, protected-tree subset proof, exact upload allowlist | `uv run python repro/src/verify_entucb.py` | All six `FALSIFIED`; full gate passed; prose overstated physical `.venv` reuse | local CPU, 91 s |
-| [`orx/honest-environment-disclosure-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/honest-environment-disclosure-release) | Correct environment-layout disclosure and rerun every gate | `uv run python repro/src/verify_entucb.py` | Final unpublished candidate; output is authoritative | local CPU |
+| [`orx/honest-environment-disclosure-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/honest-environment-disclosure-release) | Correct environment-layout disclosure and rerun every gate | `uv run python repro/src/verify_entucb.py` | Final gate passed; exact payload published at HF `1373e021` | local CPU, 70 s |
 
 ## Upstream project note
 

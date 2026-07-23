@@ -1,0 +1,12 @@
+{
+  "claim_id": 3,
+  "paper_version": "arXiv:2502.07397v1",
+  "source_anchor": "Kantorovich regret definition and Theorem 5.2",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "contract": "With epsilon_t=alpha*t^{-alpha}, the displayed v1 regret, which sums T feedbacks but subtracts Kant once, must obey the displayed confidence and approximation terms.",
+  "verdict_rule": {
+    "FALSIFIED": "An admissible Lipschitz OT instance has an action-independent printed-regret lower bound above a uniform upper bound on all displayed RHS terms.",
+    "VERIFIED": "The literal definition and scheduled theorem inequality are proved together.",
+    "BLOCKED": "Neither is established."
+  }
+}

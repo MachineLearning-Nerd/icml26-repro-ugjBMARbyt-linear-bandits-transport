@@ -1,0 +1,19 @@
+{
+  "claim_id": 1,
+  "paper_version": "arXiv:2502.07397v1",
+  "source_anchor": "Section 4.1, Equation (7); Assumption 1",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "quantified_contract": {
+    "domain": "Reference probability measures rho on R^d; continuous c in L2(rho); couplings pi with L2(rho) density",
+    "operator": "F_rho f(z)=integral f(x) exp(-2*pi*i*<x,z>) d rho(x)",
+    "claimed_properties": [
+      "F_rho is an L2(rho) isometry",
+      "<c,pi> equals <F_rho c(-dot), F pi>_L2(rho)"
+    ]
+  },
+  "verdict_rule": {
+    "FALSIFIED": "One construction satisfying every stated assumption has a nonzero exact residual in either universal property, confirmed independently.",
+    "VERIFIED": "A proof covers every quantified admissible rho, c, and pi.",
+    "BLOCKED": "Neither condition is established."
+  }
+}

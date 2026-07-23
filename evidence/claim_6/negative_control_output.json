@@ -1,0 +1,6 @@
+{
+  "control": "use five percent of the corrected confidence radius",
+  "expected": "at least one exhaustive Rademacher path leaves the set",
+  "observed_coverage": 0.0,
+  "passed": true
+}

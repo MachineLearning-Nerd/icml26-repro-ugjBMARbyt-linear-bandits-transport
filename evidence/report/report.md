@@ -148,10 +148,9 @@ radius loses coverage. That isolates the source failure from the checker.
 | 5 | FALSIFIED | admitted tail exceeds bound; admitted `L2` tail is not `l1` | repaired source condition |
 | 6 | FALSIFIED | feature collision and ill-typed width; corrected control passes | conventional OFUL confidence set |
 
-These verdicts are reproducible local evidence, not a live judge score. The
-approved 96-file text payload was published as Hugging Face revision
-[`1373e02110b2b0c18efb3eee76e889d3c214c85a`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a)
-and is awaiting live-judge evaluation. The last evaluated score remains 5/12.
+These verdicts are reproducible local evidence. They are not a live judge
+score, and the existing Hugging Face revision remains unchanged until explicit
+publication approval.
 
 ## Provenance
 

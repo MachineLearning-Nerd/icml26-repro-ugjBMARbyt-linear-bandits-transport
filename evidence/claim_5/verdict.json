@@ -1,0 +1,13 @@
+{
+  "actual_tail_l1_at_n2": 1.632993161855452,
+  "admitted_infinite_sequence_is_L2": true,
+  "admitted_infinite_sequence_tail_l1_diverges": true,
+  "assumption_3_holds": true,
+  "claim_id": 5,
+  "finite_tail_bound_residual": 1.4174914861723562,
+  "independent_checker_exit_code": 0,
+  "negative_control_failed_as_intended": true,
+  "paper_derived_tail_bound": 0.21550167568309583,
+  "q": 4.0,
+  "verdict": "FALSIFIED"
+}

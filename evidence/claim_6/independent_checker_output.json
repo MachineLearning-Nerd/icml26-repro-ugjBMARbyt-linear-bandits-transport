@@ -1,0 +1,16 @@
+{
+  "D_Lambda_shape": [
+    4,
+    4
+  ],
+  "M_M_star_shape": [
+    3,
+    3
+  ],
+  "agrees_falsified": true,
+  "checker": "independent transport and shape construction",
+  "feature_max_difference": 0.0,
+  "features_identical": true,
+  "mean_gap": 1.0,
+  "printed_addition_defined": false
+}
