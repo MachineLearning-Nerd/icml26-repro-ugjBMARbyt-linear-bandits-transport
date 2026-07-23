@@ -62,6 +62,13 @@ Every formal node inherited and ran exactly:
 uv run python repro/src/verify_entucb.py
 ```
 
+`orx local` runs from isolated Git checkouts. Consequently, `uv run` created a
+locked `.venv` inside each run checkout rather than reusing the editable
+checkout's physical `.venv`. All runs used the same `uv.lock`, CPython 3.12
+contract, fixed command, and shared `uv` cache. This execution-layout
+deviation is retained explicitly instead of being described as compliance with
+the requested one-physical-venv layout.
+
 ## Experiment tree
 
 ```bash

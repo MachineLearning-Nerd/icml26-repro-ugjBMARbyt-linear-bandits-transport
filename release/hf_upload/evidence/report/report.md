@@ -36,8 +36,12 @@ It runs one cumulative CPU suite. The important code path is:
    every claim; and
 6. exit nonzero unless every cumulative verdict contract is met.
 
-The environment is one repository-level CPython 3.12 `uv` environment, pinned
-by `pyproject.toml` and `uv.lock`. No GPU or Hugging Face upgrade was needed.
+The editable checkout has one repository-level CPython 3.12 `.venv`, pinned by
+`pyproject.toml` and `uv.lock`. OpenResearch local jobs run from isolated
+checkouts, so `uv run` recreated the same locked environment inside each run
+checkout while reusing the shared `uv` cache. This deviates from the requested
+single physical `.venv` across all nodes; no dependency version or command
+changed. No GPU or Hugging Face upgrade was needed.
 
 ## The Fourier reduction fails on an admitted transport problem
 
@@ -153,7 +157,8 @@ publication approval.
 The winning scientific branch is
 [`orx/regret-theorem-definition-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/regret-theorem-definition-audit)
 at `9a0aeebd6303283e86e5b58079651ffa4e94a4ca`. The
-[`orx/publication-snapshot-and-full-release-gate`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/publication-snapshot-and-full-release-gate)
+[`orx/honest-environment-disclosure-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/honest-environment-disclosure-release)
 child contains this report, the notebook, regenerated evidence, the protected
-tree comparison, and the exact Space upload manifest. Raw experiment and run
-identifiers remain in OpenResearch experiment descriptions.
+tree comparison, the environment-layout disclosure, and the exact Space upload
+manifest. Raw experiment and run identifiers remain in OpenResearch experiment
+descriptions.

@@ -25,9 +25,13 @@ Headline paper-versus-observed numbers:
 - Corollary 5.3 predicts a finite-basis rate; its admitted 3×3 OT instance
   loses exactly `1` per round when the nonzero tail is omitted.
 
-Compute: Apple ARM64 local CPU, one locked repository-level `uv` environment.
-No GPU and no Hugging Face cpu-upgrade were needed. The large theorem horizon
-is closed-form; no 100-million-step loop was run.
+Compute: Apple ARM64 local CPU with one locked `uv` specification. The editable
+checkout has one repository-level `.venv`; `orx local` executes in isolated
+checkouts and recreated that same locked environment per run while sharing the
+`uv` cache. This is an execution-layout deviation from the requested single
+physical `.venv`, not a dependency change. No GPU or Hugging Face cpu-upgrade
+was needed. The large theorem horizon is closed-form; no 100-million-step loop
+was run.
 
 Read the [illustrated claim-by-claim report](reports/claim-by-claim/report.md)
 or the [self-contained marimo tutorial](notebooks/entucb_claim_audit.py).
@@ -44,7 +48,8 @@ or the [self-contained marimo tutorial](notebooks/entucb_claim_audit.py).
 | [`orx/basis-rate-corollary-contract-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/basis-rate-corollary-contract-audit) | Actual OT and exact decay premise | `uv run python repro/src/verify_entucb.py` | Claims 1, 4, 5, 6 `FALSIFIED` | local CPU |
 | [`orx/regret-theorem-definition-audit`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/regret-theorem-definition-audit) | Full Theorems 5.1–5.2 terms | `uv run python repro/src/verify_entucb.py` | All six literal v1 claims `FALSIFIED` | local CPU, 45 s |
 | [`orx/release-candidate-cumulative-evidence`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/release-candidate-cumulative-evidence) | Reports, notebook, additive Space candidate, internal release gates | `uv run python repro/src/verify_entucb.py` | All six `FALSIFIED`; internal gate passed; external subset check was still pending | local CPU, 65 s |
-| [`orx/publication-snapshot-and-full-release-gate`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/publication-snapshot-and-full-release-gate) | Materialized evidence, five figures, protected-tree subset proof, exact upload allowlist | `uv run python repro/src/verify_entucb.py` | Final unpublished publication snapshot; output is authoritative | local CPU |
+| [`orx/publication-snapshot-and-full-release-gate`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/publication-snapshot-and-full-release-gate) | Materialized evidence, five figures, protected-tree subset proof, exact upload allowlist | `uv run python repro/src/verify_entucb.py` | All six `FALSIFIED`; full gate passed; prose overstated physical `.venv` reuse | local CPU, 91 s |
+| [`orx/honest-environment-disclosure-release`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/honest-environment-disclosure-release) | Correct environment-layout disclosure and rerun every gate | `uv run python repro/src/verify_entucb.py` | Final unpublished candidate; output is authoritative | local CPU |
 
 ## Upstream project note
 

@@ -7,7 +7,10 @@
 - Winning scientific Git commit:
   `9a0aeebd6303283e86e5b58079651ffa4e94a4ca`.
 - Compute: local Apple ARM64 CPU; no GPU and no Hugging Face upgrade.
-- Environment: one repository-level CPython 3.12 `uv` environment.
+- Environment: one locked CPython 3.12 `uv` specification. The editable
+  checkout has one repository-level `.venv`; isolated `orx local` run
+  checkouts recreated the same locked environment while sharing the `uv`
+  cache. This is a disclosed deviation from one physical `.venv` across runs.
 - Seeds: none for exact constructions; all eight Rademacher paths are
   enumerated for the stochastic confidence control.
 
