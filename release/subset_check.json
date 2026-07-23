@@ -1,0 +1,18 @@
+{
+  "candidate_path_count": 112,
+  "candidate_tree": "project/candidate-space-e062-plus-rigorous-v1-audit",
+  "changed_old_paths": [
+    "logbook.json"
+  ],
+  "comparison": "relative file-path inclusion plus SHA-256 equality for old paths not intentionally replaced",
+  "judged_revision": "e062355ba89b21f22d9d2a840d086d6fa1fec65b",
+  "missing_paths": [],
+  "old_path_count": 17,
+  "passed": true,
+  "prior_logbook_exact_copy": true,
+  "protected_tree": "project/protected/judged-space-e062355ba89b21f22d9d2a840d086d6fa1fec65b",
+  "unchanged_old_hash_count": 16,
+  "updated_path_reason": {
+    "logbook.json": "adds navigation to the new audit; the exact prior file is preserved at evidence/prior-judged-revision/logbook.json"
+  }
+}

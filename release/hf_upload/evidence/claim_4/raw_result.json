@@ -1,0 +1,182 @@
+{
+  "N": 2,
+  "actual_cumulative_regret": 4096.0,
+  "assumption_3_on_integer_orders": true,
+  "horizon": 4096,
+  "omitted_nonzero_coefficients": [
+    1.632993161855452
+  ],
+  "paper_parenthetical_tail_zero": false,
+  "regret_to_sqrt_NT_ratio": 45.25483399593904,
+  "sqrt_NT": 90.50966799187809,
+  "tail_included_negative_control_regret": 0.0,
+  "transport": {
+    "basis": {
+      "L2_norm": 3.4480268109295333,
+      "coefficient_exact": [
+        "3",
+        "sqrt(2)/3",
+        "sqrt(8/3)"
+      ],
+      "coefficients": [
+        3.0,
+        0.47140452079103173,
+        1.632993161855452
+      ],
+      "description": [
+        "constant",
+        "centered off-diagonal indicator",
+        "cyclic-vs-anticyclic omitted contrast"
+      ],
+      "gram_matrix": [
+        [
+          1.0,
+          7.401486830834377e-17,
+          0.0
+        ],
+        [
+          7.401486830834377e-17,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.9999999999999998
+        ]
+      ],
+      "head_l1_at_N2": 3.471404520791032,
+      "max_orthonormality_residual": 2.220446049250313e-16,
+      "omitted_tail_l1": 1.632993161855452
+    },
+    "costs": {
+      "full": [
+        [
+          2.3333333333333335,
+          1.3333333333333337,
+          5.333333333333333
+        ],
+        [
+          5.333333333333333,
+          2.3333333333333335,
+          1.3333333333333337
+        ],
+        [
+          1.3333333333333337,
+          5.333333333333333,
+          2.3333333333333335
+        ]
+      ],
+      "truncated_N2": [
+        [
+          2.3333333333333335,
+          3.3333333333333335,
+          3.3333333333333335
+        ],
+        [
+          3.3333333333333335,
+          2.3333333333333335,
+          3.3333333333333335
+        ],
+        [
+          3.3333333333333335,
+          3.3333333333333335,
+          2.3333333333333335
+        ]
+      ]
+    },
+    "ot": {
+      "full_cost_solution": {
+        "max_marginal_residual": 0.0,
+        "objective": 1.3333333333333335,
+        "plan": [
+          [
+            0.0,
+            0.3333333333333333,
+            0.0
+          ],
+          [
+            0.0,
+            -0.0,
+            0.3333333333333333
+          ],
+          [
+            0.3333333333333333,
+            0.0,
+            0.0
+          ]
+        ],
+        "solver": "scipy.optimize.linprog(method='highs')",
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "solver_status": 0
+      },
+      "included_tail_regret": 0.0,
+      "included_tail_solution": {
+        "max_marginal_residual": 0.0,
+        "objective": 1.3333333333333335,
+        "plan": [
+          [
+            0.0,
+            0.3333333333333333,
+            0.0
+          ],
+          [
+            0.0,
+            -0.0,
+            0.3333333333333333
+          ],
+          [
+            0.3333333333333333,
+            0.0,
+            0.0
+          ]
+        ],
+        "solver": "scipy.optimize.linprog(method='highs')",
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "solver_status": 0
+      },
+      "per_round_regret": 1.0,
+      "true_cost_of_truncated_plan": 2.3333333333333335,
+      "truncated_cost_solution": {
+        "max_marginal_residual": 0.0,
+        "objective": 2.3333333333333335,
+        "plan": [
+          [
+            0.3333333333333333,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.3333333333333333,
+            0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            0.3333333333333333
+          ]
+        ],
+        "solver": "scipy.optimize.linprog(method='highs')",
+        "solver_message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "solver_status": 0
+      }
+    },
+    "support": {
+      "continuous_extension": "finite values extended by disjoint smooth bumps",
+      "mu": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "nu": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "reference": "uniform product measure on the 3x3 support"
+    }
+  },
+  "zeta": "indicator(n>=2)",
+  "zeta_is_continuous": false
+}

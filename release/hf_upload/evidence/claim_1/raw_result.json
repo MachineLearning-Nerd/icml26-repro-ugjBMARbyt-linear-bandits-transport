@@ -1,0 +1,76 @@
+{
+  "assumptions": {
+    "cost_is_continuous_and_L2_rho": true,
+    "pi_density_is_L2_rho": true,
+    "pi_has_required_uniform_marginals": true,
+    "pi_is_probability": true,
+    "rho_is_probability": true
+  },
+  "construction": {
+    "continuous_cost": "c(x,y)=(x-y)^2",
+    "cost_values": [
+      0.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "literal_kernel": "exp(-2*pi*i*<x,z>)",
+    "pi": [
+      0.5,
+      0.0,
+      0.0,
+      0.5
+    ],
+    "pi_density_wrt_rho": [
+      2.0,
+      0.0,
+      0.0,
+      2.0
+    ],
+    "rho": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "support": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  },
+  "identity": {
+    "absolute_residual": 0.5,
+    "left_exact": "0",
+    "left_real": 0.0,
+    "right_exact": "1/2",
+    "right_imag": -1.2246467991473532e-16,
+    "right_real": 0.5
+  },
+  "isometry": {
+    "input_squared_norm": 1.0,
+    "input_squared_norm_exact": "1",
+    "output_squared_norm": 0.0,
+    "output_squared_norm_exact": "0",
+    "squared_norm_residual": 1.0,
+    "test_function": [
+      1.0,
+      -1.0,
+      -1.0,
+      1.0
+    ]
+  }
+}

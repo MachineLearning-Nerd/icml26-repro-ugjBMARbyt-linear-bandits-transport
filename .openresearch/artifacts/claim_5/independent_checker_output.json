@@ -1,0 +1,78 @@
+{
+  "agrees_falsified": true,
+  "checker": "independent enumeration of all 3! Birkhoff vertices",
+  "full_optimum": [
+    1,
+    2,
+    0
+  ],
+  "indicator_assumption_holds": true,
+  "permutation_costs": [
+    {
+      "full": 2.3333333333333335,
+      "permutation": [
+        0,
+        1,
+        2
+      ],
+      "truncated": 2.3333333333333335
+    },
+    {
+      "full": 3.0,
+      "permutation": [
+        0,
+        2,
+        1
+      ],
+      "truncated": 3.0
+    },
+    {
+      "full": 3.0000000000000004,
+      "permutation": [
+        1,
+        0,
+        2
+      ],
+      "truncated": 3.0
+    },
+    {
+      "full": 1.3333333333333333,
+      "permutation": [
+        1,
+        2,
+        0
+      ],
+      "truncated": 3.3333333333333335
+    },
+    {
+      "full": 5.333333333333333,
+      "permutation": [
+        2,
+        0,
+        1
+      ],
+      "truncated": 3.3333333333333335
+    },
+    {
+      "full": 3.0000000000000004,
+      "permutation": [
+        2,
+        1,
+        0
+      ],
+      "truncated": 3.0
+    }
+  ],
+  "q4_actual_tail_l1": 1.632993161855452,
+  "q4_assumption_holds": true,
+  "q4_paper_tail_bound": 0.21550167568309583,
+  "tail_is_nonzero": true,
+  "true_regret_of_truncated_optimum": 1.0000000000000002,
+  "truncated_optimum": [
+    0,
+    1,
+    2
+  ],
+  "unique_full_optimum": true,
+  "unique_truncated_optimum": true
+}

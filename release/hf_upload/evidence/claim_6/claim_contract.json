@@ -1,0 +1,17 @@
+{
+  "claim_id": 6,
+  "paper_version": "arXiv:2502.07397v1",
+  "source_anchor": "Equations (9)-(12), especially (11)-(12)",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "quantified_contract": {
+    "model": "R_t=<F c*(-dot),F pi_t>_L2(rho)+xi_t under Assumptions 1-2",
+    "estimator": "regularized least squares with D_t^lambda=M_t^* M_t+lambda D Lambda",
+    "width": "the printed Equation (12) log determinant",
+    "coverage": "the confidence construction must be defined and calibrated on every admissible history"
+  },
+  "verdict_rule": {
+    "FALSIFIED": "An admissible transport history contradicts the linear observation model or makes the printed width undefined.",
+    "VERIFIED": "The literal construction is well-defined and coverage is proved over the quantified domain.",
+    "BLOCKED": "Neither condition is established."
+  }
+}

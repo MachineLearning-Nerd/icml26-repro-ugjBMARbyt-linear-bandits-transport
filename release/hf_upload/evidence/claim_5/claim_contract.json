@@ -1,0 +1,12 @@
+{
+  "claim_id": 5,
+  "paper_version": "arXiv:2502.07397v1",
+  "source_anchor": "Assumption 3, Corollary 5.4, and the varying-order proof",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "contract": "The premise zeta(n)=1-n^{-q} must imply the tail bound used in the proof before the claimed T^((q+1)/(2q+1)) interpolation follows.",
+  "verdict_rule": {
+    "FALSIFIED": "A sequence satisfies literal Assumption 3 for the selected q but violates the asserted tail inequality; an L2-admissible sequence may even have divergent l1 tail.",
+    "VERIFIED": "The tail implication and resulting rate hold over the literal quantified premise.",
+    "BLOCKED": "Neither is established."
+  }
+}

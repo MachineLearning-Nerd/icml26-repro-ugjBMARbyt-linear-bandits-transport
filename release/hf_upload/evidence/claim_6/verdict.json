@@ -1,0 +1,11 @@
+{
+  "assumptions_satisfied": true,
+  "claim_id": 6,
+  "corrected_formula_exact_coverage": 1.0,
+  "different_expected_feedback_gap": 1.0,
+  "identical_action_features": true,
+  "independent_checker_exit_code": 0,
+  "negative_control_failed_as_intended": true,
+  "printed_equation_12_defined": false,
+  "verdict": "FALSIFIED"
+}

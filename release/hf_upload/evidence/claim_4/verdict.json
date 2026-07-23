@@ -1,0 +1,12 @@
+{
+  "actual_ot_per_round_regret": 1.0,
+  "assumption_3_holds": true,
+  "claim_id": 4,
+  "cumulative_regret": 4096.0,
+  "horizon": 4096,
+  "independent_checker_exit_code": 0,
+  "negative_control_failed_as_intended": true,
+  "omitted_tail_nonzero": true,
+  "regret_to_sqrt_NT_ratio": 45.25483399593904,
+  "verdict": "FALSIFIED"
+}

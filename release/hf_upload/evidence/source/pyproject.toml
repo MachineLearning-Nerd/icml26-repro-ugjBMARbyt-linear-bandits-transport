@@ -1,0 +1,15 @@
+[project]
+name = "linear-bandits-transport-reproduction"
+version = "0.1.0"
+description = "Claim-by-claim CPU reproduction of arXiv 2502.07397"
+readme = "README.md"
+requires-python = "==3.12.*"
+dependencies = [
+    "marimo>=0.17,<1",
+    "matplotlib>=3.9,<4",
+    "numpy>=2,<3",
+    "scipy>=1.13,<2",
+]
+
+[tool.uv]
+package = false

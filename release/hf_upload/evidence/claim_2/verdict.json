@@ -1,0 +1,15 @@
+{
+  "C_bar": 1.5811388300841898,
+  "beta_T_upper": 1.5811475200384244,
+  "claim_id": 2,
+  "entropic_ot_comparator": 1.1372863664141655,
+  "horizon": 100000000,
+  "independent_checker_exit_code": 0,
+  "logdet_width_upper": 63.5323758513062,
+  "negative_control_failed_as_intended": true,
+  "printed_regret_lower": 113728635.50413018,
+  "sigma": 1e-06,
+  "theorem_rhs_upper": 398538.21291818883,
+  "verdict": "FALSIFIED",
+  "violation_margin": 113330097.29121199
+}

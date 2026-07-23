@@ -17,3 +17,5 @@ per-round-regret statements.
 
 The protected prior revision and its 17-file manifest are recorded on the
 Prior judged revision page. The release candidate is additive and text-only.
+The machine-readable subset proof and full command ledger are included under
+`evidence/release/`.

@@ -1,0 +1,6 @@
+{
+  "control": "include the omitted third basis coefficient",
+  "expected_regret": 0.0,
+  "observed_regret": 0.0,
+  "passed": true
+}
