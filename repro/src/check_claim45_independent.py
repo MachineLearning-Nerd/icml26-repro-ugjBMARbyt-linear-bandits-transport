@@ -51,9 +51,9 @@ def check() -> dict:
     result = {
         "checker": "independent enumeration of all 3! Birkhoff vertices",
         "permutation_costs": permutation_costs,
-        "unique_truncated_optimum": len(truncated_choices) == 1,
+        "unique_truncated_optimum": bool(len(truncated_choices) == 1),
         "truncated_optimum": truncated_choices[0]["permutation"],
-        "unique_full_optimum": len(full_choices) == 1,
+        "unique_full_optimum": bool(len(full_choices) == 1),
         "full_optimum": full_choices[0]["permutation"],
         "true_regret_of_truncated_optimum": next(
             item["full"]
@@ -61,13 +61,15 @@ def check() -> dict:
             if item["permutation"] == truncated_choices[0]["permutation"]
         )
         - full_min,
-        "indicator_assumption_holds": head_l1 >= norm,
-        "tail_is_nonzero": abs(coeff[2]) > 0,
-        "q4_assumption_holds": head_l1 / (1.0 - 2.0**-4) >= norm,
+        "indicator_assumption_holds": bool(head_l1 >= norm),
+        "tail_is_nonzero": bool(abs(coeff[2]) > 0),
+        "q4_assumption_holds": bool(
+            head_l1 / (1.0 - 2.0**-4) >= norm
+        ),
         "q4_actual_tail_l1": float(abs(coeff[2])),
         "q4_paper_tail_bound": q4_bound,
     }
-    result["agrees_falsified"] = (
+    result["agrees_falsified"] = bool(
         result["unique_truncated_optimum"]
         and result["unique_full_optimum"]
         and result["true_regret_of_truncated_optimum"] > 0.99
