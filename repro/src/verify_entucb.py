@@ -14,6 +14,7 @@ import time
 from pathlib import Path
 
 from claim1_fourier import evaluate_literal_counterexample
+from claim45_basis_rates import evaluate_claims_4_and_5
 from claim6_confidence import evaluate_confidence_contract
 
 
@@ -222,7 +223,168 @@ def run() -> int:
         f"negative_control={str(negative6['passed']).lower()} "
         f"git_sha={git_sha}"
     )
-    return 0 if claim1_falsified and claim6_falsified else 1
+    claim45 = evaluate_claims_4_and_5()
+    independent45_path = (
+        ROOT
+        / ".openresearch"
+        / "artifacts"
+        / "claim_4"
+        / "independent_checker_output.json"
+    )
+    independent45_path.parent.mkdir(parents=True, exist_ok=True)
+    independent45 = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).with_name("check_claim45_independent.py")),
+            "--output",
+            str(independent45_path),
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if independent45.returncode != 0:
+        print(independent45.stdout)
+        print(independent45.stderr, file=sys.stderr)
+        raise RuntimeError("independent claims 4-5 checker disagreed with the evidence")
+
+    claim4 = claim45["claim_4"]
+    claim4_falsified = (
+        claim4["assumption_3_on_integer_orders"]
+        and not claim4["paper_parenthetical_tail_zero"]
+        and claim4["transport"]["basis"]["max_orthonormality_residual"] < 1e-12
+        and claim4["transport"]["ot"]["per_round_regret"] > 0.99
+        and claim4["regret_to_sqrt_NT_ratio"] > 40.0
+        and claim4["tail_included_negative_control_regret"] == 0.0
+    )
+    claim4_verdict = "FALSIFIED" if claim4_falsified else "BLOCKED"
+    claim4_artifact = ROOT / ".openresearch" / "artifacts" / "claim_4"
+    (claim4_artifact / "raw_result.json").write_text(
+        json.dumps(claim4, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    claim4_negative = {
+        "control": "include the omitted third basis coefficient",
+        "expected_regret": 0.0,
+        "observed_regret": claim4["tail_included_negative_control_regret"],
+        "passed": claim4["tail_included_negative_control_regret"] == 0.0,
+    }
+    (claim4_artifact / "negative_control_output.json").write_text(
+        json.dumps(claim4_negative, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    claim4_summary = {
+        "claim_id": 4,
+        "verdict": claim4_verdict,
+        "assumption_3_holds": claim4["assumption_3_on_integer_orders"],
+        "omitted_tail_nonzero": not claim4["paper_parenthetical_tail_zero"],
+        "actual_ot_per_round_regret": claim4["transport"]["ot"][
+            "per_round_regret"
+        ],
+        "horizon": claim4["horizon"],
+        "cumulative_regret": claim4["actual_cumulative_regret"],
+        "regret_to_sqrt_NT_ratio": claim4["regret_to_sqrt_NT_ratio"],
+        "negative_control_failed_as_intended": claim4_negative["passed"],
+        "independent_checker_exit_code": independent45.returncode,
+    }
+    (claim4_artifact / "verdict.json").write_text(
+        json.dumps(claim4_summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    claim5 = claim45["claim_5"]
+    q4 = next(item for item in claim5["q_sweep"] if item["q"] == 4.0)
+    infinite = claim5["infinite_coefficient_counterexample"]
+    claim5_falsified = (
+        q4["assumption_holds"]
+        and q4["tail_bound_residual"] > 1.4
+        and infinite["L2_membership"]
+        and infinite["assumption_3_holds_for_every_q_positive"]
+        and infinite["tail_l1_diverges"]
+    )
+    claim5_verdict = "FALSIFIED" if claim5_falsified else "BLOCKED"
+    claim5_artifact = ROOT / ".openresearch" / "artifacts" / "claim_5"
+    claim5_artifact.mkdir(parents=True, exist_ok=True)
+    (claim5_artifact / "raw_result.json").write_text(
+        json.dumps(claim5, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    claim5_negative = {
+        "control": "require the paper-derived q=4 tail inequality on an admitted sequence",
+        "expected_exit_code": 1,
+        "actual_tail_l1": q4["actual_tail_l1"],
+        "claimed_upper_bound": q4["paper_derived_tail_bound"],
+        "observed_exit_code": int(
+            not (q4["actual_tail_l1"] <= q4["paper_derived_tail_bound"])
+        ),
+        "passed": q4["actual_tail_l1"] > q4["paper_derived_tail_bound"],
+    }
+    (claim5_artifact / "negative_control_output.json").write_text(
+        json.dumps(claim5_negative, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    claim5_summary = {
+        "claim_id": 5,
+        "verdict": claim5_verdict,
+        "q": 4.0,
+        "assumption_3_holds": q4["assumption_holds"],
+        "actual_tail_l1_at_n2": q4["actual_tail_l1"],
+        "paper_derived_tail_bound": q4["paper_derived_tail_bound"],
+        "finite_tail_bound_residual": q4["tail_bound_residual"],
+        "admitted_infinite_sequence_is_L2": infinite["L2_membership"],
+        "admitted_infinite_sequence_tail_l1_diverges": infinite[
+            "tail_l1_diverges"
+        ],
+        "negative_control_failed_as_intended": claim5_negative["passed"],
+        "independent_checker_exit_code": independent45.returncode,
+    }
+    (claim5_artifact / "verdict.json").write_text(
+        json.dumps(claim5_summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    for artifact, extra in (
+        (claim4_artifact, {"ot_solver": "scipy.optimize.linprog(method='highs')"}),
+        (
+            claim5_artifact,
+            {"coefficient_partial_sum_cutoff": 100_000, "selected_q": 4.0},
+        ),
+    ):
+        artifact_environment = dict(environment)
+        artifact_environment.update(extra)
+        artifact_environment["wall_seconds"] = time.perf_counter() - started
+        (artifact / "environment.json").write_text(
+            json.dumps(artifact_environment, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        (artifact / "exact_command.txt").write_text(COMMAND + "\n", encoding="utf-8")
+
+    print("CLAIM 4 — finite-basis rate contract")
+    print(json.dumps(claim4_summary, indent=2, sort_keys=True))
+    print(
+        "ORX_EVAL "
+        f"claim_4_verdict={claim4_verdict} "
+        f"ot_gap={claim4_summary['actual_ot_per_round_regret']:.17g} "
+        f"regret_sqrtNT_ratio={claim4_summary['regret_to_sqrt_NT_ratio']:.17g} "
+        f"negative_control={str(claim4_negative['passed']).lower()} "
+        f"git_sha={git_sha}"
+    )
+    print("CLAIM 5 — coefficient-decay rate contract")
+    print(json.dumps(claim5_summary, indent=2, sort_keys=True))
+    print(
+        "ORX_EVAL "
+        f"claim_5_verdict={claim5_verdict} "
+        f"q=4 tail_residual={claim5_summary['finite_tail_bound_residual']:.17g} "
+        f"infinite_tail_l1={str(infinite['tail_l1_diverges']).lower()} "
+        f"negative_control={str(claim5_negative['passed']).lower()} "
+        f"git_sha={git_sha}"
+    )
+    return (
+        0
+        if claim1_falsified
+        and claim6_falsified
+        and claim4_falsified
+        and claim5_falsified
+        else 1
+    )
 
 
 if __name__ == "__main__":

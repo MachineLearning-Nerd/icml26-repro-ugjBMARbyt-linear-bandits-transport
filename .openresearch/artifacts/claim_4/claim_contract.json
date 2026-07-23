@@ -1,0 +1,12 @@
+{
+  "claim_id": 4,
+  "paper_version": "arXiv:2502.07397v1",
+  "source_anchor": "Assumption 3 and Corollary 5.3",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "contract": "With zeta(n)=indicator(n>=N), the stated Assumption 3 must justify zero coefficients after N before the 2T tail term can be removed and sqrt(NT) concluded.",
+  "verdict_rule": {
+    "FALSIFIED": "A coefficient sequence satisfies literal Assumption 3 but has nonzero tail, and the prescribed N-dimensional OT optimizer has linear true regret.",
+    "VERIFIED": "The implication and rate are proved over the literal premise.",
+    "BLOCKED": "Neither is established."
+  }
+}
