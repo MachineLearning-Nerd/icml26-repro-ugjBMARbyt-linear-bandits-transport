@@ -1,0 +1,11 @@
+{
+  "claim_id": 1,
+  "paper_version": "arXiv:2502.07397v1",
+  "experiment_scope": "corrected finite-group specialization",
+  "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
+  "verdict_rule": {
+    "VERIFIED": "Reserved for the literal paper operator over its full quantified domain.",
+    "FALSIFIED": "An admissible counterexample to the literal operator.",
+    "BLOCKED": "A changed operator works but cannot establish the literal claim."
+  }
+}
