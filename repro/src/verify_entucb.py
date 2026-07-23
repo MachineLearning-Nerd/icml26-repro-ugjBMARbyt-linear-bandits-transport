@@ -14,6 +14,7 @@ import time
 from pathlib import Path
 
 from claim1_fourier import evaluate_literal_counterexample
+from claim23_regret_bounds import evaluate_claims_2_and_3
 from claim45_basis_rates import evaluate_claims_4_and_5
 from claim6_confidence import evaluate_confidence_contract
 
@@ -377,9 +378,210 @@ def run() -> int:
         f"negative_control={str(claim5_negative['passed']).lower()} "
         f"git_sha={git_sha}"
     )
+    claims23 = evaluate_claims_2_and_3()
+    claim2_artifact = ROOT / ".openresearch" / "artifacts" / "claim_2"
+    claim3_artifact = ROOT / ".openresearch" / "artifacts" / "claim_3"
+    claim2_artifact.mkdir(parents=True, exist_ok=True)
+    claim3_artifact.mkdir(parents=True, exist_ok=True)
+    independent23_path = claim2_artifact / "independent_checker_output.json"
+    independent23 = subprocess.run(
+        [
+            sys.executable,
+            str(Path(__file__).with_name("check_claim23_independent.py")),
+            "--output",
+            str(independent23_path),
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if independent23.returncode != 0:
+        print(independent23.stdout)
+        print(independent23.stderr, file=sys.stderr)
+        raise RuntimeError("independent claims 2-3 checker disagreed with the evidence")
+    (claim3_artifact / "independent_checker_output.json").write_text(
+        independent23_path.read_text(encoding="utf-8"), encoding="utf-8"
+    )
+
+    claim2 = claims23["claim_2"]
+    claim2_falsified = (
+        all(claims23["assumptions"].values())
+        and claims23["comparators"]["entropic"]["max_marginal_residual"] < 1e-12
+        and claim2["violation_margin"] > 90_000_000.0
+        and independent23.returncode == 0
+    )
+    claim2_verdict = "FALSIFIED" if claim2_falsified else "BLOCKED"
+    (claim2_artifact / "raw_result.json").write_text(
+        json.dumps(
+            {
+                "construction": claims23["construction"],
+                "assumptions": claims23["assumptions"],
+                "comparators": claims23["comparators"],
+                "shared_bound_terms": claims23["shared_bound_terms"],
+                "claim_2": claim2,
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    claim2_negative = {
+        "control": "subtract the comparator at every round as in standard regret",
+        "printed_repeated_optimum_regret": claim2[
+            "printed_regret_lower_for_every_action_sequence"
+        ],
+        "corrected_repeated_optimum_regret": claim2[
+            "corrected_repeated_optimum_regret"
+        ],
+        "corrected_regret_below_bound": claim2["corrected_repeated_optimum_regret"]
+        <= claim2["theorem_rhs_upper_for_every_action_sequence"],
+        "passed": claim2["corrected_repeated_optimum_regret"] == 0.0,
+    }
+    (claim2_artifact / "negative_control_output.json").write_text(
+        json.dumps(claim2_negative, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    claim2_summary = {
+        "claim_id": 2,
+        "verdict": claim2_verdict,
+        "horizon": claims23["construction"]["horizon"],
+        "entropic_ot_comparator": claims23["comparators"]["entropic"][
+            "objective"
+        ],
+        "sigma": claims23["shared_bound_terms"]["sigma"],
+        "C_bar": claims23["shared_bound_terms"]["C_bar"],
+        "beta_T_upper": claims23["shared_bound_terms"]["beta_T_upper"],
+        "logdet_width_upper": claims23["shared_bound_terms"][
+            "logdet_width_upper"
+        ],
+        "printed_regret_lower": claim2[
+            "printed_regret_lower_for_every_action_sequence"
+        ],
+        "theorem_rhs_upper": claim2[
+            "theorem_rhs_upper_for_every_action_sequence"
+        ],
+        "violation_margin": claim2["violation_margin"],
+        "negative_control_failed_as_intended": claim2_negative["passed"],
+        "independent_checker_exit_code": independent23.returncode,
+    }
+    (claim2_artifact / "verdict.json").write_text(
+        json.dumps(claim2_summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    claim3 = claims23["claim_3"]
+    claim3_falsified = (
+        all(claims23["assumptions"].values())
+        and claims23["comparators"]["kantorovich"]["max_marginal_residual"] < 1e-12
+        and abs(claim3["schedule_values"][-1] - 0.00005) < 1e-15
+        and claim3["violation_margin"] > 90_000_000.0
+        and independent23.returncode == 0
+    )
+    claim3_verdict = "FALSIFIED" if claim3_falsified else "BLOCKED"
+    (claim3_artifact / "raw_result.json").write_text(
+        json.dumps(
+            {
+                "construction": claims23["construction"],
+                "assumptions": claims23["assumptions"],
+                "comparators": claims23["comparators"],
+                "shared_bound_terms": claims23["shared_bound_terms"],
+                "claim_3": claim3,
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    claim3_negative = {
+        "control": "replace epsilon_t=alpha*t^-alpha with constant epsilon_t=alpha",
+        "maximum_schedule_error": claim3["constant_schedule_max_error"],
+        "expected_exit_code": 1,
+        "observed_exit_code": int(claim3["constant_schedule_max_error"] > 0.49),
+        "passed": claim3["constant_schedule_max_error"] > 0.49,
+        "corrected_repeated_optimum_regret": claim3[
+            "corrected_repeated_optimum_regret"
+        ],
+    }
+    (claim3_artifact / "negative_control_output.json").write_text(
+        json.dumps(claim3_negative, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    claim3_summary = {
+        "claim_id": 3,
+        "verdict": claim3_verdict,
+        "horizon": claims23["construction"]["horizon"],
+        "kantorovich_ot_comparator": claims23["comparators"]["kantorovich"][
+            "objective"
+        ],
+        "alpha": claim3["alpha"],
+        "epsilon_T": claim3["schedule_values"][-1],
+        "kappa": claims23["comparators"]["kappa"],
+        "approximation_term": claim3["approximation_term"],
+        "printed_regret_lower": claim3[
+            "printed_regret_lower_for_every_action_sequence"
+        ],
+        "theorem_rhs_upper": claim3[
+            "theorem_rhs_upper_for_every_action_sequence"
+        ],
+        "violation_margin": claim3["violation_margin"],
+        "negative_control_failed_as_intended": claim3_negative["passed"],
+        "independent_checker_exit_code": independent23.returncode,
+    }
+    (claim3_artifact / "verdict.json").write_text(
+        json.dumps(claim3_summary, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+
+    for artifact, extra in (
+        (claim2_artifact, {"fixed_epsilon": 0.2}),
+        (
+            claim3_artifact,
+            {
+                "alpha": claim3["alpha"],
+                "epsilon_schedule": "alpha*t^(-alpha)",
+            },
+        ),
+    ):
+        artifact_environment = dict(environment)
+        artifact_environment.update(extra)
+        artifact_environment["wall_seconds"] = time.perf_counter() - started
+        (artifact / "environment.json").write_text(
+            json.dumps(artifact_environment, indent=2, sort_keys=True) + "\n",
+            encoding="utf-8",
+        )
+        (artifact / "exact_command.txt").write_text(COMMAND + "\n", encoding="utf-8")
+
+    print("CLAIM 2 — Theorem 5.1 literal regret contract")
+    print(json.dumps(claim2_summary, indent=2, sort_keys=True))
+    print(
+        "ORX_EVAL "
+        f"claim_2_verdict={claim2_verdict} "
+        f"printed_regret_lower={claim2_summary['printed_regret_lower']:.17g} "
+        f"rhs_upper={claim2_summary['theorem_rhs_upper']:.17g} "
+        f"beta_upper={claim2_summary['beta_T_upper']:.17g} "
+        f"logdet_upper={claim2_summary['logdet_width_upper']:.17g} "
+        f"negative_control={str(claim2_negative['passed']).lower()} "
+        f"git_sha={git_sha}"
+    )
+    print("CLAIM 3 — Theorem 5.2 literal regret contract")
+    print(json.dumps(claim3_summary, indent=2, sort_keys=True))
+    print(
+        "ORX_EVAL "
+        f"claim_3_verdict={claim3_verdict} "
+        f"epsilon_T={claim3_summary['epsilon_T']:.17g} "
+        f"printed_regret_lower={claim3_summary['printed_regret_lower']:.17g} "
+        f"rhs_upper={claim3_summary['theorem_rhs_upper']:.17g} "
+        f"approximation_term={claim3_summary['approximation_term']:.17g} "
+        f"negative_control={str(claim3_negative['passed']).lower()} "
+        f"git_sha={git_sha}"
+    )
     return (
         0
         if claim1_falsified
+        and claim2_falsified
+        and claim3_falsified
         and claim6_falsified
         and claim4_falsified
         and claim5_falsified
