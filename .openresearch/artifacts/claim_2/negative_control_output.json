@@ -1,0 +1,7 @@
+{
+  "control": "subtract the comparator at every round as in standard regret",
+  "corrected_regret_below_bound": true,
+  "corrected_repeated_optimum_regret": 0.0,
+  "passed": true,
+  "printed_repeated_optimum_regret": 113728635.50413018
+}

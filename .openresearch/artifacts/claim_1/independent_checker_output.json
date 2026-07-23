@@ -1,0 +1,11 @@
+{
+  "agrees_falsified": true,
+  "checker": "independent NumPy matrix construction",
+  "identity_residual": 0.5,
+  "input_norm_sq": 1.0,
+  "isometry_residual": 1.0,
+  "lhs": 0.0,
+  "output_norm_sq": 0.0,
+  "rhs_imag": -6.123233995736766e-17,
+  "rhs_real": 0.5
+}

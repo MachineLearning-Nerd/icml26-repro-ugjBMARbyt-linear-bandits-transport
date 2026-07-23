@@ -1,0 +1,8 @@
+{
+  "control": "replace epsilon_t=alpha*t^-alpha with constant epsilon_t=alpha",
+  "corrected_repeated_optimum_regret": 0.0,
+  "expected_exit_code": 1,
+  "maximum_schedule_error": 0.49995,
+  "observed_exit_code": 1,
+  "passed": true
+}

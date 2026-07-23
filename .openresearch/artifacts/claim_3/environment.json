@@ -1,0 +1,12 @@
+{
+  "alpha": 0.5,
+  "command": "uv run python repro/src/verify_entucb.py",
+  "epsilon_schedule": "alpha*t^(-alpha)",
+  "git_sha": "9a0aeebd6303283e86e5b58079651ffa4e94a4ca",
+  "logical_cpu_count": 8,
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "processor": "arm",
+  "python": "3.12.11",
+  "seeds": [],
+  "wall_seconds": 1.2169820839772
+}

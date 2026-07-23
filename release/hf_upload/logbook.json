@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "title": "Repro - Linear Bandits beyond Inner Product Spaces",
+  "emoji": "🎯",
+  "space_id": "DineshAI/ugjBMARbyt",
+  "paper": null,
+  "tags": [
+    "icml2026-repro",
+    "paper-ugjBMARbyt"
+  ],
+  "updated_at": "2026-07-23T00:00:00+00:00",
+  "root": {
+    "slug": "index",
+    "title": "Repro - Linear Bandits beyond Inner Product Spaces",
+    "file": "pages/index.md",
+    "children": [
+      {
+        "slug": "overview",
+        "title": "Overview",
+        "file": "pages/overview/page.md",
+        "children": []
+      },
+      {
+        "slug": "claims",
+        "title": "Claims",
+        "file": "pages/claims/page.md",
+        "children": []
+      },
+      {
+        "slug": "evidence",
+        "title": "Evidence",
+        "file": "pages/evidence/page.md",
+        "children": []
+      },
+      {
+        "slug": "verification-run",
+        "title": "Verification run",
+        "file": "pages/verification-run/page.md",
+        "children": []
+      },
+      {
+        "slug": "conclusion",
+        "title": "Conclusion",
+        "file": "pages/conclusion/page.md",
+        "children": []
+      },
+      {
+        "slug": "rigorous-audit",
+        "title": "Rigorous v1 claim audit",
+        "file": "pages/rigorous-audit/page.md",
+        "children": [
+          {
+            "slug": "rigorous-claim-1",
+            "title": "Claim 1 - Fourier identity",
+            "file": "pages/rigorous-audit/claim-1.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-claim-2",
+            "title": "Claim 2 - Entropic regret",
+            "file": "pages/rigorous-audit/claim-2.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-claim-3",
+            "title": "Claim 3 - Decaying entropy",
+            "file": "pages/rigorous-audit/claim-3.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-claim-4",
+            "title": "Claim 4 - Finite basis",
+            "file": "pages/rigorous-audit/claim-4.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-claim-5",
+            "title": "Claim 5 - Coefficient decay",
+            "file": "pages/rigorous-audit/claim-5.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-claim-6",
+            "title": "Claim 6 - Confidence sets",
+            "file": "pages/rigorous-audit/claim-6.md",
+            "children": []
+          },
+          {
+            "slug": "rigorous-provenance",
+            "title": "Provenance and limitations",
+            "file": "pages/rigorous-audit/provenance.md",
+            "children": []
+          }
+        ]
+      },
+      {
+        "slug": "prior-judged-revision",
+        "title": "Prior judged revision",
+        "file": "pages/prior-judged-revision/page.md",
+        "children": []
+      }
+    ]
+  },
+  "agent_view_tokens": 6000,
+  "revision": "release-candidate-unpublished"
+}

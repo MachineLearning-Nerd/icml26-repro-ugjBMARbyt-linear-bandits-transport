@@ -1,0 +1,15 @@
+{
+  "alpha": 0.5,
+  "approximation_term": 184207.44092215915,
+  "claim_id": 3,
+  "epsilon_T": 5e-05,
+  "horizon": 100000000,
+  "independent_checker_exit_code": 0,
+  "kantorovich_ot_comparator": 1.0,
+  "kappa": 1.0,
+  "negative_control_failed_as_intended": true,
+  "printed_regret_lower": 99999999.0,
+  "theorem_rhs_upper": 582745.653840348,
+  "verdict": "FALSIFIED",
+  "violation_margin": 99417253.34615965
+}

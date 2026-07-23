@@ -1,0 +1,11 @@
+{
+  "assumptions_satisfied": true,
+  "claim_id": 1,
+  "equation_7_absolute_residual": 0.5,
+  "equation_7_left": 0.0,
+  "equation_7_right_real": 0.5,
+  "independent_checker_exit_code": 0,
+  "isometry_squared_norm_residual": 1.0,
+  "negative_control_failed_as_intended": true,
+  "verdict": "FALSIFIED"
+}

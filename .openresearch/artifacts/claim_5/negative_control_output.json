@@ -1,0 +1,8 @@
+{
+  "actual_tail_l1": 1.632993161855452,
+  "claimed_upper_bound": 0.21550167568309583,
+  "control": "require the paper-derived q=4 tail inequality on an admitted sequence",
+  "expected_exit_code": 1,
+  "observed_exit_code": 1,
+  "passed": true
+}

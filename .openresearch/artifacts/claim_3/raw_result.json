@@ -1,0 +1,140 @@
+{
+  "assumptions": {
+    "alpha_in_open_unit_interval": true,
+    "cost_continuous_and_L2_rho": true,
+    "cost_is_Lipschitz_on_support": true,
+    "delta_positive": true,
+    "epsilon_positive": true,
+    "known_C_bar_at_least_L2_norm": true,
+    "lambda_positive": true,
+    "sigma_strictly_positive": true,
+    "zero_noise_is_sigma_squared_sub_gaussian": true
+  },
+  "claim_3": {
+    "alpha": 0.5,
+    "approximation_term": 184207.44092215915,
+    "constant_schedule_max_error": 0.49995,
+    "constant_schedule_negative_control_values": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "corrected_repeated_optimum_regret": 0.0,
+    "paper_regret_definition": "sum_t R_t - Kant",
+    "printed_regret_lower_for_every_action_sequence": 99999999.0,
+    "schedule": "epsilon_t=alpha*t^(-alpha)",
+    "schedule_times": [
+      1,
+      2,
+      4,
+      16,
+      256,
+      65536,
+      100000000
+    ],
+    "schedule_values": [
+      0.5,
+      0.3535533905932738,
+      0.25,
+      0.125,
+      0.03125,
+      0.001953125,
+      5e-05
+    ],
+    "theorem_rhs_upper_for_every_action_sequence": 582745.653840348,
+    "violation_margin": 99417253.34615965
+  },
+  "comparators": {
+    "cost_L2_rho": 1.5811388300841898,
+    "entropic": {
+      "cost": 1.0066928509242847,
+      "epsilon": 0.2,
+      "max_marginal_residual": 0.0,
+      "objective": 1.1372863664141655,
+      "plan": [
+        [
+          0.49665357453785763,
+          0.003346425462142366
+        ],
+        [
+          0.003346425462142366,
+          0.49665357453785763
+        ]
+      ],
+      "relative_entropy": 0.6529675774494036,
+      "solver": "closed-form 2x2 entropic OT stationarity equation"
+    },
+    "kantorovich": {
+      "max_marginal_residual": 0.0,
+      "objective": 1.0,
+      "plan": [
+        [
+          0.5,
+          -0.0
+        ],
+        [
+          0.0,
+          0.5
+        ]
+      ],
+      "solver": "scipy.optimize.linprog(method='highs')"
+    },
+    "kappa": 1.0,
+    "lipschitz_constant": 1.0,
+    "upper_renyi_dimension": 0.0
+  },
+  "construction": {
+    "continuous_cost": "c(x,y)=1+(x-y)^2 on {0,1}^2",
+    "cost": [
+      [
+        1.0,
+        2.0
+      ],
+      [
+        2.0,
+        1.0
+      ]
+    ],
+    "horizon": 100000000,
+    "mu": [
+      0.5,
+      0.5
+    ],
+    "noise": "identically zero",
+    "not_vacuous": "diagonal OT costs 1; off-diagonal OT costs 2",
+    "nu": [
+      0.5,
+      0.5
+    ],
+    "rho": [
+      [
+        0.25,
+        0.25
+      ],
+      [
+        0.25,
+        0.25
+      ]
+    ]
+  },
+  "shared_bound_terms": {
+    "C_bar": 1.5811388300841898,
+    "beta_T_upper": 1.5811475200384244,
+    "charitable_correction": "uses identity in the compatible space for the ill-typed printed beta determinant",
+    "confidence_term": 398538.1857561585,
+    "delta": 0.05,
+    "derivation": "rank/trace determinant bound det(I+c M*M)<=(1+cT/d)^d",
+    "dimension": 4,
+    "feature_norm_upper_bound": 1.0,
+    "lambda": 1.0,
+    "logdet_beta_upper": 68.13754569132989,
+    "logdet_width_upper": 63.5323758513062,
+    "noise_term": 0.027162030314812388,
+    "sigma": 1e-06,
+    "theorem_5_1_rhs_upper": 398538.21291818883
+  }
+}
