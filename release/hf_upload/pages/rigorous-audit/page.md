@@ -8,6 +8,8 @@ This additive audit replaces no prior page. It evaluates the exact statements
 in arXiv `2502.07397v1`, the source version matched by the judge. Current arXiv
 v2 changes theorem numbering and some rates.
 
+> First visit? [Start with what changed, why, and what proves it](#/start-here).
+
 | Claim | Failed claim | Different claim that holds |
 |---|---|---|
 | 1 | `FALSIFIED`: Equation (7) residual `1/2` | `VERIFIED`: normalized finite-group identity residual `1.23e-32` |

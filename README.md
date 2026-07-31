@@ -23,20 +23,22 @@ live judge record for OpenReview `ugjBMARbyt`. The previous Space used random
 features and was judged 5/12. The new cumulative local-CPU suite solves real
 2×2 and 3×3 optimal-transport problems, evaluates the exact Fourier,
 confidence, determinant, entropy-schedule, and regret expressions, and runs an
-independent checker plus a failing control for every claim.
+independent checker plus a calibration control with a predeclared outcome for
+every claim.
 
 Assessment: all six **literal v1** contracts remain `FALSIFIED`, and six
 different, explicitly scoped replacement claims are `VERIFIED`. Every pair has
-raw traces, an independent checker, and a negative control. The current arXiv
-v2 changes several statements.
+raw traces, an independent checker, and a negative or repair control. The
+current arXiv v2 changes several statements.
 
 Published evidence:
 [`DineshAI/ugjBMARbyt@1373e021`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a).
 That falsification-only revision remains public and preserved. The paired
 verdict revision is published additively. The live judge awarded revision
 `1373e021` and the paired-alternative revision `741d38f` **12/12**. The
-current re-verification adds public SVG traces and source provenance without
-removing either judged evidence tree; it is awaiting evaluation.
+current re-verification adds public SVG traces, a paired evidence dashboard,
+an audit poster, and source provenance without removing either judged evidence
+tree; it is awaiting evaluation.
 
 Headline paper-versus-observed numbers:
 
@@ -46,8 +48,9 @@ Headline paper-versus-observed numbers:
 - Theorem 5.2 RHS is at most `582,745.7`; literal printed regret is at least
   `99,999,999.0`, with the exact schedule
   `epsilon_t=0.5 t^{-0.5}`.
-- Corollary 5.3 predicts a finite-basis rate; its admitted 3×3 OT instance
-  loses exactly `1` per round when the nonzero tail is omitted.
+- Corollary 5.3's parenthetical equates its indicator condition with a zero
+  coefficient tail; the admitted 3×3 construction has a nonzero tail and loses
+  exactly `1` per round when that coefficient is omitted.
 
 Paired replacement claims:
 

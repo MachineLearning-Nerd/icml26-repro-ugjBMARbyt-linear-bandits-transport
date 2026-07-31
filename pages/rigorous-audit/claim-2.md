@@ -1,26 +1,40 @@
-# Claim 2 - Entropic regret bound
+# Claim 2 · Entropic regret bound
 
-## Verdict: FALSIFIED
+## Paper contract
 
-V1 prints entropic regret as a sum of `T` entropic objectives minus one
-entropic optimum. Its proof later sums one-step gaps, which would subtract the
-optimum `T` times.
+Equation (6) of arXiv `2502.07397v1` defines regret as a sum of `T` entropic
+objectives minus **one** entropic optimum. The proof later sums one-step gaps,
+which would subtract that optimum `T` times.
 
-On a nonconstant 2×2 cost, the exact entropic comparator is
-`1.1372863664`. At `T=100,000,000`, every action sequence has literal printed
-regret at least `113,728,635.5`. A charitable action-uniform upper bound on the
-complete theorem RHS is `398,538.2`.
+## Paper verdict: FALSIFIED
 
-The RHS computation includes `sigma=1e-6`, `C_bar=1.5811388301`,
-`beta_T<=1.5811475200`, and the width log determinant `<=63.5323758513`.
-Subtracting the comparator every round gives zero for a repeated optimal action
-and removes this contradiction.
+For the audited nonconstant 2×2 cost, the exact entropic comparator is
+`1.1372863664`. At `T=100,000,000`, every action sequence therefore has literal
+printed regret at least `113,728,635.5`. A deliberately generous,
+action-uniform upper bound on the complete theorem right-hand side is only
+`398,538.2`, leaving a contradiction margin of `113,330,097.3`.
 
-## Alternative verdict: VERIFIED
+| Evidence layer | Public trace | Result |
+|---|---|---|
+| Exact source | [Source audit](evidence/claim_2/source_audit.md) | Equation (6), theorem, and proof mismatch |
+| Primary construction | [Raw result](evidence/claim_2/raw_result.json) | Lower bound `113.7M` exceeds RHS `0.399M` |
+| Verdict contract | [Verdict trace](evidence/claim_2/verdict.json) | Complete literal bound fails |
+| Independent implementation | [Checker output](evidence/claim_2/independent_checker_output.json) | Recomputes comparator, lower bound, and RHS |
+| Negative control | [Mutation output](evidence/claim_2/negative_control_output.json) | Restoring one-time subtraction recreates `113.7M` regret |
 
-On this audited nonconstant 2x2 instance, standard entropic regret subtracting
-the optimum every round is zero for the repeated exact entropic optimizer.
-The optimizer objective is recomputed from its plan; corrected regret and the
-printed-regret decomposition residual are both below `1e-12`.
+## Different claim: VERIFIED
 
-Evidence: `evidence/claim_2/`.
+On this exact 2×2 instance, standard entropic regret that subtracts the optimum
+**once per round** is `0` for the repeated exact entropic optimizer. The
+optimizer objective is recomputed from its plan; both corrected regret and the
+printed-regret decomposition residual are below `1e-12`.
+
+### What changed
+
+The replacement changes the comparator multiplicity from once overall to once
+per round and limits the assertion to the audited finite instance.
+
+### Limitation
+
+Zero regret for this repeated optimizer is an instance control, not a proof of
+the paper's full theorem under a corrected definition.

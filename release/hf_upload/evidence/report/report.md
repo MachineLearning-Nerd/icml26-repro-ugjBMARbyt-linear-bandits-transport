@@ -32,8 +32,8 @@ It runs one cumulative CPU suite. The important code path is:
    form;
 4. compute the exact Fourier, RLS, confidence-radius, determinant, entropy
    schedule, and regret quantities printed in v1;
-5. run an independent implementation and a deliberately failing control for
-   every claim; and
+5. run an independent implementation and a calibration control with a
+   predeclared outcome for every claim; and
 6. exit nonzero unless every cumulative verdict contract is met.
 
 The editable checkout has one repository-level CPython 3.12 `.venv`, pinned by

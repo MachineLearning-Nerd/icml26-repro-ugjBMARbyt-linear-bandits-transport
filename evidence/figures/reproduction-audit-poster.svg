@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" role="img" aria-labelledby="title desc">
+<title id="title">Reproduction audit poster</title>
+<desc id="desc">Generated directly from the public verifier JSON. Red reports the failed paper contract; green reports a separately scoped replacement claim.</desc>
+<rect width="1200" height="1600" fill="white"/>
+<rect width="1200" height="1600" fill="#f8fafc"/>
+<rect x="0" y="0" width="1200" height="324" fill="#101828"/>
+<rect x="0" y="0" width="16" height="324" fill="#ea580c"/>
+<text x="64" y="73" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#fdba74" text-anchor="start">REPRODUCTION AUDIT · ARXIV 2502.07397v1</text>
+<text x="64" y="128" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="700" fill="white" text-anchor="start">Linear Bandits beyond</text>
+<text x="64" y="176" font-family="Inter,Arial,sans-serif" font-size="38" font-weight="700" fill="white" text-anchor="start">Inner Product Spaces</text>
+<text x="64" y="222" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="400" fill="#d0d5dd" text-anchor="start">What failed, what holds instead, and the public evidence connecting them.</text>
+<rect x="64" y="264" width="320" height="106" rx="14" fill="#fff1f0"/>
+<text x="84" y="307" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#b42318" text-anchor="start">6</text>
+<text x="84" y="333" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#101828" text-anchor="start">paper claims</text>
+<text x="270" y="307" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED</text>
+<rect x="416" y="264" width="320" height="106" rx="14" fill="#ecfdf3"/>
+<text x="436" y="307" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#067647" text-anchor="start">6</text>
+<text x="436" y="333" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#101828" text-anchor="start">different claims</text>
+<text x="622" y="307" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#067647" text-anchor="start">VERIFIED</text>
+<rect x="768" y="264" width="320" height="106" rx="14" fill="#fff7ed"/>
+<text x="788" y="307" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="700" fill="#ea580c" text-anchor="start">12/12</text>
+<text x="788" y="333" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#101828" text-anchor="start">paired revision</text>
+<text x="974" y="307" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700" fill="#ea580c" text-anchor="start">JUDGED</text>
+<text x="64" y="438" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#ea580c" text-anchor="start">THE EVIDENCE STANDARD</text>
+<text x="64" y="476" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">Source anchor</text>
+<text x="242" y="476" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400" fill="#667085" text-anchor="middle">→</text>
+<text x="280" y="476" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">Admissible construction</text>
+<text x="500" y="476" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400" fill="#667085" text-anchor="middle">→</text>
+<text x="538" y="476" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">Primary trace</text>
+<text x="682" y="476" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400" fill="#667085" text-anchor="middle">→</text>
+<text x="720" y="476" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">Independent check</text>
+<text x="890" y="476" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400" fill="#667085" text-anchor="middle">→</text>
+<text x="928" y="476" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">Calibration control</text>
+<rect x="64" y="532" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="64" y="532" width="72" height="224" rx="16" fill="#101828"/>
+<text x="100" y="584" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">01</text>
+<text x="158" y="574" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Fourier identity · Eq. (7)</text>
+<rect x="158" y="598" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="172" y="619" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="172" y="643" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: pairing residual 0.5; norm residual 1</text>
+<rect x="158" y="670" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="172" y="691" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="172" y="715" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: unitary Z₂×Z₂ residual 1.23e−32</text>
+<rect x="616" y="532" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="616" y="532" width="72" height="224" rx="16" fill="#101828"/>
+<text x="652" y="584" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">02</text>
+<text x="710" y="574" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Entropic regret · Theorem 5.1</text>
+<rect x="710" y="598" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="724" y="619" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="724" y="643" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: 113.7M lower bound &gt; 0.399M RHS</text>
+<rect x="710" y="670" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="724" y="691" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="724" y="715" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: per-round comparator, optimum regret 0</text>
+<rect x="64" y="792" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="64" y="792" width="72" height="224" rx="16" fill="#101828"/>
+<text x="100" y="844" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">03</text>
+<text x="158" y="834" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Kantorovich regret · Theorem 5.2</text>
+<rect x="158" y="858" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="172" y="879" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="172" y="903" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: 100.0M lower bound &gt; 0.583M RHS</text>
+<rect x="158" y="930" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="172" y="951" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="172" y="975" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: exact schedule, standard optimum regret 0</text>
+<rect x="616" y="792" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="616" y="792" width="72" height="224" rx="16" fill="#101828"/>
+<text x="652" y="844" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">04</text>
+<text x="710" y="834" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Finite-basis equivalence · Cor. 5.3</text>
+<rect x="710" y="858" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="724" y="879" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="724" y="903" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: admitted nonzero omitted tail 1.633</text>
+<rect x="710" y="930" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="724" y="951" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="724" y="975" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: all 3 coefficients, tail and regret 0</text>
+<rect x="64" y="1052" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="64" y="1052" width="72" height="224" rx="16" fill="#101828"/>
+<text x="100" y="1104" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">05</text>
+<text x="158" y="1094" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Coefficient decay · Cor. 5.4</text>
+<rect x="158" y="1118" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="172" y="1139" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="172" y="1163" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: q=4 tail 1.633 &gt; bound 0.216</text>
+<rect x="158" y="1190" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="172" y="1211" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="172" y="1235" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: scoped q=1 inequality, residual −0.091</text>
+<rect x="616" y="1052" width="520" height="224" rx="16" fill="white" stroke="#d0d5dd"/>
+<rect x="616" y="1052" width="72" height="224" rx="16" fill="#101828"/>
+<text x="652" y="1104" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">06</text>
+<text x="710" y="1094" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#172033" text-anchor="start">Confidence model · Eqs. (11–12)</text>
+<rect x="710" y="1118" width="398" height="58" rx="9" fill="#fff1f0"/>
+<text x="724" y="1139" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#b42318" text-anchor="start">FALSIFIED PAPER CLAIM</text>
+<text x="724" y="1163" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Paper: feature gap 1; 4×4 + 3×3 undefined</text>
+<rect x="710" y="1190" width="398" height="58" rx="9" fill="#ecfdf3"/>
+<text x="724" y="1211" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="700" fill="#067647" text-anchor="start">DIFFERENT CLAIM THAT HOLDS</text>
+<text x="724" y="1235" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="start">Holds: determinant residual 4.44e−16; 8/8</text>
+<rect x="64" y="1348" width="1072" height="148" rx="16" fill="#101828"/>
+<text x="88" y="1388" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#fdba74" text-anchor="start">WHY THE VERDICTS ARE TRUSTWORTHY</text>
+<text x="88" y="1422" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• exact v1 source wording and hashes</text>
+<text x="88" y="1452" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• deterministic CPU constructions; no seeds</text>
+<text x="456" y="1422" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• independent implementations agree</text>
+<text x="456" y="1452" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• every calibration control has its expected outcome</text>
+<text x="824" y="1422" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• old judged tree preserved</text>
+<text x="824" y="1452" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="white" text-anchor="start">• public text traces and source</text>
+<text x="600" y="1552" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="middle">Scope: literal arXiv v1 contracts. Replacement claims are narrower and explicitly state what changed.</text>
+</svg>

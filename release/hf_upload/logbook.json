@@ -15,6 +15,12 @@
     "file": "pages/index.md",
     "children": [
       {
+        "slug": "start-here",
+        "title": "Start here - what changed",
+        "file": "pages/start-here/page.md",
+        "children": []
+      },
+      {
         "slug": "overview",
         "title": "Overview",
         "file": "pages/overview/page.md",

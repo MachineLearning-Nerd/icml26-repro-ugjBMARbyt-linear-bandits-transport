@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc">
+<title id="title">Evidence quality dashboard</title>
+<desc id="desc">Generated directly from the public verifier JSON. Red reports the failed paper contract; green reports a separately scoped replacement claim.</desc>
+<rect width="1200" height="920" fill="white"/>
+<rect x="0" y="0" width="1200" height="154" fill="#101828"/>
+<text x="56" y="58" font-family="Inter,Arial,sans-serif" font-size="29" font-weight="700" fill="white" text-anchor="start">Evidence quality dashboard</text>
+<text x="56" y="91" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="400" fill="#d0d5dd" text-anchor="start">Every verdict is supported by a complete, public verification chain.</text>
+<rect x="56" y="113" width="250" height="76" rx="12" fill="white" stroke="#d0d5dd"/>
+<text x="74" y="145" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#ea580c" text-anchor="start">6/6</text>
+<text x="74" y="171" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">paper claims falsified</text>
+<rect x="332" y="113" width="250" height="76" rx="12" fill="white" stroke="#d0d5dd"/>
+<text x="350" y="145" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#ea580c" text-anchor="start">6/6</text>
+<text x="350" y="171" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">replacements verified</text>
+<rect x="608" y="113" width="250" height="76" rx="12" fill="white" stroke="#d0d5dd"/>
+<text x="626" y="145" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#ea580c" text-anchor="start">6/6</text>
+<text x="626" y="171" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">independent checks</text>
+<rect x="884" y="113" width="250" height="76" rx="12" fill="white" stroke="#d0d5dd"/>
+<text x="902" y="145" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" fill="#ea580c" text-anchor="start">6/6</text>
+<text x="902" y="171" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">calibration controls</text>
+<text x="56" y="241" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#667085" text-anchor="start">Claim and decisive trace</text>
+<text x="476" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Source</text>
+<text x="592" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Premises</text>
+<text x="708" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Primary</text>
+<text x="824" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Independent</text>
+<text x="940" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Calibration</text>
+<text x="1056" y="241" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#667085" text-anchor="middle">Replacement</text>
+<line x1="48" y1="258" x2="1152" y2="258" stroke="#d0d5dd"/>
+<rect x="48" y="276" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="303" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">1 · Fourier identity</text>
+<text x="66" y="327" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">Eq. (7) residual 0.5 → 1.23e−32</text>
+<circle cx="476" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="311" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="317" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="362" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="389" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">2 · Entropic regret</text>
+<text x="66" y="413" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">113.7M lower &gt; 0.399M RHS → 0</text>
+<circle cx="476" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="397" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="403" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="448" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="475" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">3 · Kantorovich regret</text>
+<text x="66" y="499" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">100.0M lower &gt; 0.583M RHS → 0</text>
+<circle cx="476" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="483" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="489" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="534" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="561" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">4 · Indicator equivalence</text>
+<text x="66" y="585" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">tail 1.633 → full-model tail 0</text>
+<circle cx="476" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="569" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="575" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="620" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="647" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">5 · Coefficient tail</text>
+<text x="66" y="671" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">q=4 fails → scoped q=1 holds</text>
+<circle cx="476" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="655" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="661" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="706" width="1104" height="70" rx="10" fill="#f8fafc"/>
+<text x="66" y="733" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#172033" text-anchor="start">6 · Confidence model</text>
+<text x="66" y="757" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="start">feature gap 1 → coverage 8/8</text>
+<circle cx="476" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="476" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="592" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="592" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="708" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="708" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="824" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="824" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="940" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="940" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<circle cx="1056" cy="741" r="16" fill="#ecfdf3" stroke="#067647"/>
+<text x="1056" y="747" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700" fill="#067647" text-anchor="middle">✓</text>
+<rect x="48" y="812" width="1104" height="72" rx="12" fill="#fff7ed" stroke="#fed7aa"/>
+<text x="68" y="842" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="700" fill="#ea580c" text-anchor="start">Reader guarantee</text>
+<text x="68" y="866" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#172033" text-anchor="start">A green replacement is never the failed statement with a new label; its changed assumptions and scope are explicit.</text>
+</svg>

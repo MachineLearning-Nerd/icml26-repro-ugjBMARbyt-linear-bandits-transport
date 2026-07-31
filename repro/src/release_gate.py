@@ -128,7 +128,12 @@ def run_release_gate(root: Path) -> dict:
         repository_evidence / "reverification_summary.json",
         evidence / "reverification_summary.json",
     )
+    _copy_text(
+        repository_evidence / "design-review.md",
+        evidence / "design-review.md",
+    )
     _copy_text(root / "README.md", upload / "README.md")
+    _copy_text(root / "logbook.json", upload / "logbook.json")
 
     for source in sorted((root / "pages").rglob("*.md")):
         _copy_text(source, upload / source.relative_to(root))

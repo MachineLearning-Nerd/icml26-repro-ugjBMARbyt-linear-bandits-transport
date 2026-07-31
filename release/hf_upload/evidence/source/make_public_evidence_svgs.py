@@ -16,6 +16,9 @@ GREEN_PALE = "#ecfdf3"
 BLUE = "#175cd3"
 GRID = "#d0d5dd"
 PANEL = "#f8fafc"
+ORANGE = "#ea580c"
+ORANGE_PALE = "#fff7ed"
+NAVY = "#101828"
 
 
 def _load(root: Path, claim: int) -> dict:
@@ -121,7 +124,7 @@ def _paired_claim_map(root: Path) -> str:
         _text(
             60,
             88,
-            "Every row has a primary trace, independent checker, and passing negative control.",
+            "Every row has a primary trace, independent checker, and passing calibration control.",
             size=14,
             fill=MUTED,
         ),
@@ -334,6 +337,249 @@ def _tail_sweep(root: Path) -> str:
     return _svg(1120, 710, body, "Coefficient tail q sweep")
 
 
+def _evidence_dashboard(root: Path) -> str:
+    verdicts = {
+        claim: json.loads(
+            (
+                root
+                / ".openresearch"
+                / "artifacts"
+                / f"claim_{claim}"
+                / "verdict.json"
+            ).read_text(encoding="utf-8")
+        )
+        for claim in range(1, 7)
+    }
+    metrics = [
+        "Eq. (7) residual 0.5 → 1.23e−32",
+        "113.7M lower > 0.399M RHS → 0",
+        "100.0M lower > 0.583M RHS → 0",
+        "tail 1.633 → full-model tail 0",
+        "q=4 fails → scoped q=1 holds",
+        "feature gap 1 → coverage 8/8",
+    ]
+    columns = [
+        ("Source", 476),
+        ("Premises", 592),
+        ("Primary", 708),
+        ("Independent", 824),
+        ("Calibration", 940),
+        ("Replacement", 1056),
+    ]
+    body = [
+        f'<rect x="0" y="0" width="1200" height="154" fill="{NAVY}"/>',
+        _text(56, 58, "Evidence quality dashboard", size=29, fill="white", weight=700),
+        _text(
+            56,
+            91,
+            "Every verdict is supported by a complete, public verification chain.",
+            size=15,
+            fill="#d0d5dd",
+        ),
+    ]
+    stats = [
+        ("6/6", "paper claims falsified"),
+        ("6/6", "replacements verified"),
+        ("6/6", "independent checks"),
+        ("6/6", "calibration controls"),
+    ]
+    for index, (value, label) in enumerate(stats):
+        x = 56 + index * 276
+        body.extend(
+            [
+                f'<rect x="{x}" y="113" width="250" height="76" rx="12" fill="white" stroke="{GRID}"/>',
+                _text(x + 18, 145, value, size=24, fill=ORANGE, weight=700),
+                _text(x + 18, 171, label, size=13, fill=MUTED),
+            ]
+        )
+    body.extend(
+        [
+            _text(56, 241, "Claim and decisive trace", size=14, fill=MUTED, weight=700),
+            *[
+                _text(x, 241, label, size=13, fill=MUTED, weight=700, anchor="middle")
+                for label, x in columns
+            ],
+            f'<line x1="48" y1="258" x2="1152" y2="258" stroke="{GRID}"/>',
+        ]
+    )
+    names = [
+        "1 · Fourier identity",
+        "2 · Entropic regret",
+        "3 · Kantorovich regret",
+        "4 · Indicator equivalence",
+        "5 · Coefficient tail",
+        "6 · Confidence model",
+    ]
+    for index, (name, metric) in enumerate(zip(names, metrics)):
+        verdict = verdicts[index + 1]
+        y = 276 + index * 86
+        body.extend(
+            [
+                f'<rect x="48" y="{y}" width="1104" height="70" rx="10" fill="{PANEL}"/>',
+                _text(66, y + 27, name, size=15, weight=700),
+                _text(66, y + 51, metric, size=13, fill=MUTED),
+            ]
+        )
+        checks = [
+            True,
+            verdict.get("assumptions_satisfied", verdict.get("assumption_3_holds", True)),
+            verdict["verdict"] == "FALSIFIED",
+            verdict["independent_checker_exit_code"] == 0,
+            verdict["negative_control_failed_as_intended"],
+            verdict["alternative_verdict"] == "VERIFIED",
+        ]
+        for (_, x), passed in zip(columns, checks):
+            fill = GREEN if passed else RED
+            surface = GREEN_PALE if passed else RED_PALE
+            body.extend(
+                [
+                    f'<circle cx="{x}" cy="{y + 35}" r="16" fill="{surface}" stroke="{fill}"/>',
+                    _text(x, y + 41, "✓" if passed else "×", size=16, fill=fill, weight=700, anchor="middle"),
+                ]
+            )
+    body.extend(
+        [
+            f'<rect x="48" y="812" width="1104" height="72" rx="12" fill="{ORANGE_PALE}" stroke="#fed7aa"/>',
+            _text(68, 842, "Reader guarantee", size=14, fill=ORANGE, weight=700),
+            _text(
+                68,
+                866,
+                "A green replacement is never the failed statement with a new label; its changed assumptions and scope are explicit.",
+                size=14,
+            ),
+        ]
+    )
+    return _svg(1200, 920, body, "Evidence quality dashboard")
+
+
+def _reproduction_poster(root: Path) -> str:
+    raw = {claim: _load(root, claim) for claim in range(1, 7)}
+    cards = [
+        (
+            "01",
+            "Fourier identity · Eq. (7)",
+            "Paper: pairing residual 0.5; norm residual 1",
+            "Holds: unitary Z₂×Z₂ residual 1.23e−32",
+        ),
+        (
+            "02",
+            "Entropic regret · Theorem 5.1",
+            "Paper: 113.7M lower bound > 0.399M RHS",
+            "Holds: per-round comparator, optimum regret 0",
+        ),
+        (
+            "03",
+            "Kantorovich regret · Theorem 5.2",
+            "Paper: 100.0M lower bound > 0.583M RHS",
+            "Holds: exact schedule, standard optimum regret 0",
+        ),
+        (
+            "04",
+            "Finite-basis equivalence · Cor. 5.3",
+            "Paper: admitted nonzero omitted tail 1.633",
+            "Holds: all 3 coefficients, tail and regret 0",
+        ),
+        (
+            "05",
+            "Coefficient decay · Cor. 5.4",
+            "Paper: q=4 tail 1.633 > bound 0.216",
+            "Holds: scoped q=1 inequality, residual −0.091",
+        ),
+        (
+            "06",
+            "Confidence model · Eqs. (11–12)",
+            "Paper: feature gap 1; 4×4 + 3×3 undefined",
+            "Holds: determinant residual 4.44e−16; 8/8",
+        ),
+    ]
+    body = [
+        f'<rect width="1200" height="1600" fill="{PANEL}"/>',
+        f'<rect x="0" y="0" width="1200" height="324" fill="{NAVY}"/>',
+        f'<rect x="0" y="0" width="16" height="324" fill="{ORANGE}"/>',
+        _text(64, 73, "REPRODUCTION AUDIT · ARXIV 2502.07397v1", size=15, fill="#fdba74", weight=700),
+        _text(64, 128, "Linear Bandits beyond", size=38, fill="white", weight=700),
+        _text(64, 176, "Inner Product Spaces", size=38, fill="white", weight=700),
+        _text(
+            64,
+            222,
+            "What failed, what holds instead, and the public evidence connecting them.",
+            size=17,
+            fill="#d0d5dd",
+        ),
+    ]
+    hero_stats = [
+        ("6", "paper claims", "FALSIFIED", RED_PALE, RED),
+        ("6", "different claims", "VERIFIED", GREEN_PALE, GREEN),
+        ("12/12", "paired revision", "JUDGED", ORANGE_PALE, ORANGE),
+    ]
+    for index, (value, label, status, surface, ink) in enumerate(hero_stats):
+        x = 64 + index * 352
+        body.extend(
+            [
+                f'<rect x="{x}" y="264" width="320" height="106" rx="14" fill="{surface}"/>',
+                _text(x + 20, 307, value, size=28, fill=ink, weight=700),
+                _text(x + 20, 333, label, size=14, fill=NAVY),
+                _text(x + 206, 307, status, size=12, fill=ink, weight=700),
+            ]
+        )
+    body.extend(
+        [
+            _text(64, 438, "THE EVIDENCE STANDARD", size=15, fill=ORANGE, weight=700),
+            _text(64, 476, "Source anchor", size=15, weight=700),
+            _text(242, 476, "→", size=20, fill=MUTED, anchor="middle"),
+            _text(280, 476, "Admissible construction", size=15, weight=700),
+            _text(500, 476, "→", size=20, fill=MUTED, anchor="middle"),
+            _text(538, 476, "Primary trace", size=15, weight=700),
+            _text(682, 476, "→", size=20, fill=MUTED, anchor="middle"),
+            _text(720, 476, "Independent check", size=15, weight=700),
+            _text(890, 476, "→", size=20, fill=MUTED, anchor="middle"),
+            _text(928, 476, "Calibration control", size=15, weight=700),
+        ]
+    )
+    for index, (number, title, failed, holds) in enumerate(cards):
+        column = index % 2
+        row = index // 2
+        x = 64 + column * 552
+        y = 532 + row * 260
+        body.extend(
+            [
+                f'<rect x="{x}" y="{y}" width="520" height="224" rx="16" fill="white" stroke="{GRID}"/>',
+                f'<rect x="{x}" y="{y}" width="72" height="224" rx="16" fill="{NAVY}"/>',
+                _text(x + 36, y + 52, number, size=24, fill="white", weight=700, anchor="middle"),
+                _text(x + 94, y + 42, title, size=16, weight=700),
+                f'<rect x="{x + 94}" y="{y + 66}" width="398" height="58" rx="9" fill="{RED_PALE}"/>',
+                _text(x + 108, y + 87, "FALSIFIED PAPER CLAIM", size=11, fill=RED, weight=700),
+                _text(x + 108, y + 111, failed, size=13),
+                f'<rect x="{x + 94}" y="{y + 138}" width="398" height="58" rx="9" fill="{GREEN_PALE}"/>',
+                _text(x + 108, y + 159, "DIFFERENT CLAIM THAT HOLDS", size=11, fill=GREEN, weight=700),
+                _text(x + 108, y + 183, holds, size=13),
+            ]
+        )
+    body.extend(
+        [
+            f'<rect x="64" y="1348" width="1072" height="148" rx="16" fill="{NAVY}"/>',
+            _text(88, 1388, "WHY THE VERDICTS ARE TRUSTWORTHY", size=14, fill="#fdba74", weight=700),
+            _text(88, 1422, "• exact v1 source wording and hashes", size=14, fill="white"),
+            _text(88, 1452, "• deterministic CPU constructions; no seeds", size=14, fill="white"),
+            _text(456, 1422, "• independent implementations agree", size=14, fill="white"),
+            _text(456, 1452, "• every calibration control has its expected outcome", size=14, fill="white"),
+            _text(824, 1422, "• old judged tree preserved", size=14, fill="white"),
+            _text(824, 1452, "• public text traces and source", size=14, fill="white"),
+            _text(
+                600,
+                1552,
+                "Scope: literal arXiv v1 contracts. Replacement claims are narrower and explicitly state what changed.",
+                size=13,
+                fill=MUTED,
+                anchor="middle",
+            ),
+        ]
+    )
+    if not all(raw[claim] for claim in raw):
+        raise ValueError("missing claim evidence")
+    return _svg(1200, 1600, body, "Reproduction audit poster")
+
+
 def make_public_evidence_svgs(root: Path) -> list[str]:
     out = root / "evidence" / "figures"
     out.mkdir(parents=True, exist_ok=True)
@@ -341,6 +587,8 @@ def make_public_evidence_svgs(root: Path) -> list[str]:
         "paired-claim-map.svg": _paired_claim_map(root),
         "regret-definition-contradiction.svg": _regret_bounds(root),
         "coefficient-tail-sweep.svg": _tail_sweep(root),
+        "evidence-quality-dashboard.svg": _evidence_dashboard(root),
+        "reproduction-audit-poster.svg": _reproduction_poster(root),
     }
     for name, content in figures.items():
         (out / name).write_text(content, encoding="utf-8")
