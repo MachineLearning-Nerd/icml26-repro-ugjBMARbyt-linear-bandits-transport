@@ -1,3 +1,18 @@
+---
+title: "Repro - Linear Bandits beyond Inner Product Spaces"
+emoji: 🎯
+colorFrom: yellow
+colorTo: red
+sdk: static
+pinned: false
+tags:
+ - trackio
+ - trackio-logbook
+ - open-experiment
+ - icml2026-repro
+ - paper-ugjBMARbyt
+---
+
 # Reproduction: Bandit Optimal Transport claim audit
 
 [![Open in molab](https://marimo.io/molab-shield.svg)](https://molab.marimo.io/github/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/blob/master/notebooks/entucb_claim_audit.py)

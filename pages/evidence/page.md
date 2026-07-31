@@ -1,0 +1,51 @@
+# Evidence
+
+
+---
+<!-- trackio-cell
+{"type": "markdown", "id": "cell_5490d78f5480", "created_at": "2026-07-21T20:56:26+00:00", "title": "Verification output (last 40 lines)"}
+-->
+## Verification output (last 40 lines)
+
+```
+==============================================================================
+  T=500, N=8: regret=3.63, sqrt(NT log T)=157.69, ratio=0.023
+  -> PASS
+
+==============================================================================
+CLAIM 3 (Theorem 5.2): sublinear regret with entropy penalty decay
+==============================================================================
+  regret vs T [100, 400, 1600]: [1.3, 5.4, 2.8] (sub-linear)
+  -> PASS
+
+==============================================================================
+CLAIM 4 (Corollary 5.3): finite-dim regret O~(sqrt(NT))
+==============================================================================
+  regret vs N [4, 8, 16] at T=400: [np.float64(2.5), np.float64(5.8), np.float64(9.8)]
+  -> PASS
+
+==============================================================================
+CLAIM 5 (Corollary 5.4): coefficient decay interpolates regret
+==============================================================================
+  fast-decay regret=11.61, slow-decay=18.41 (fast decay better)
+  -> PASS
+
+==============================================================================
+CLAIM 6 (Corollary 5.5): confidence sets well-defined (regularized LS)
+==============================================================================
+  regret finite and increasing (True): 0.00 -> 1.75
+  -> PASS
+
+==============================================================================
+VERDICT SUMMARY
+==============================================================================
+  [PASS] c1_fourier_reduction
+  [PASS] c2_regret_bound
+  [PASS] c3_sublinear
+  [PASS] c4_finite_dim
+  [PASS] c5_decay
+  [PASS] c6_confidence
+
+  6/6 claims verified.
+  wrote outputs/verdict.json
+```
