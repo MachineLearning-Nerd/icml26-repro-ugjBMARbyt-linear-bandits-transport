@@ -2,16 +2,18 @@
   "added_path_count": 0,
   "added_paths": [],
   "candidate_path_count": 121,
-  "candidate_tree": "DineshAI/ugjBMARbyt@a25231cb plus 112-path text overlay",
-  "changed_existing_path_count": 3,
+  "candidate_tree": "DineshAI/ugjBMARbyt@060dd1aa plus 112-path text overlay",
+  "changed_existing_path_count": 5,
   "changed_existing_paths": [
     "README.md",
     "evidence/release/subset_check.json",
-    "evidence/report/report.md"
+    "evidence/report/report.md",
+    "pages/prior-judged-revision/page.md",
+    "pages/rigorous-audit/page.md"
   ],
   "comparison": "relative-path inclusion, immutable judged SHA-256 equality, prior-page-tree inclusion, and original index-line subsequence",
   "live_path_count": 121,
-  "live_revision": "a25231cb4fceada31d2a1cbb0221efa65591b98b",
+  "live_revision": "060dd1aa0cdd4486e762715616c90e3dc08d5da0",
   "missing_paths": [],
   "original_index_lines_preserved_in_order": true,
   "passed": true,
@@ -24,8 +26,8 @@
     "logbook.json",
     "pages/index.md"
   ],
-  "protected_mutable_paths_check": "README narrows Claim 4 and corrects calibration-control terminology while retaining the banked 12/12 status; logbook.json and pages/index.md are unchanged and retain all prior judged nodes and original index lines.",
+  "protected_mutable_paths_check": "README records the newly judged 21f43cbd 12/12 result while preserving prior score history; logbook.json and pages/index.md are unchanged and retain all prior judged nodes and original index lines.",
   "start_here_node_present": true,
-  "status": "current live HF tree and both judged page trees are subsets of the final additive candidate",
-  "unchanged_overlay_hash_count": 109
+  "status": "current live HF tree and all judged page trees are subsets of the score-status candidate",
+  "unchanged_overlay_hash_count": 107
 }

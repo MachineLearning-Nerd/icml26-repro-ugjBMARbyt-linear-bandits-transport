@@ -49,7 +49,7 @@ output, negative-control output, environment provenance, and source code under
 failed contract;
 `VERIFIED` is used only for the separately stated alternative contract.
 
-The prior judged paths remain present. The falsification-only revision
-`1373e021` and paired-alternative revision `741d38f` were each judged 12/12.
-The current public-graph and source-provenance revision is awaiting evaluation;
-the banked 12/12 remains the baseline and no increase is claimed.
+The prior judged paths remain present. Revisions `1373e021`, `741d38f`, and
+the public-graph/source revision `21f43cbd` were each judged 12/12. The newer
+dashboard, poster, and detailed-table revision is awaiting evaluation; the
+banked 12/12 remains the baseline and no increase is claimed.

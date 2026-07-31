@@ -153,8 +153,9 @@ earlier 96-file falsification-only payload was published as Hugging Face revisio
 [`1373e02110b2b0c18efb3eee76e889d3c214c85a`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a)
 and remains preserved. The live judge awarded that revision 12/12, accepting
 all six literal claims as `FALSIFIED`. The later paired-verdict revision
-`741d38f232a54cd51281a4ea8c607bedad1339d9` was also judged 12/12. The
-current public-graph and source-provenance update is additive and awaiting
+`741d38f232a54cd51281a4ea8c607bedad1339d9` and public-graph/source revision
+`21f43cbde0a737cfa1068738d35cd6676183d078` were also judged 12/12. The
+newer dashboard, poster, and detailed-table update is additive and awaiting
 evaluation against that banked baseline.
 
 ## Provenance

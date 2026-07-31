@@ -18,6 +18,6 @@ The exact prior navigation JSON is also preserved byte-for-byte at
 
 The live judge evaluated that exact revision at
 `2026-07-23T07:14:53+00:00` and assigned 5/12. This is a historical snapshot:
-the later falsification-only revision `1373e021` and paired-alternative
-revision `741d38f` were each judged 12/12. The current revision remains
+the later revisions `1373e021`, `741d38f`, and the public-graph/source revision
+`21f43cbd` were each judged 12/12. The newer dashboard/poster revision remains
 awaiting evaluation against that banked baseline.

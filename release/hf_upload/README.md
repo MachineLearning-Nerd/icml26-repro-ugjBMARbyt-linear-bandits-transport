@@ -34,11 +34,11 @@ current arXiv v2 changes several statements.
 Published evidence:
 [`DineshAI/ugjBMARbyt@1373e021`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a).
 That falsification-only revision remains public and preserved. The paired
-verdict revision is published additively. The live judge awarded revision
-`1373e021` and the paired-alternative revision `741d38f` **12/12**. The
-current re-verification adds public SVG traces, a paired evidence dashboard,
-an audit poster, and source provenance without removing either judged evidence
-tree; it is awaiting evaluation.
+verdict revision is published additively. The live judge awarded revisions
+`1373e021`, `741d38f`, and the public-graph/source revision `21f43cbd`
+**12/12**. The newer reader-experience revision adds a paired evidence
+dashboard, audit poster, and detailed evidence tables without removing any
+judged evidence tree; it is awaiting evaluation.
 
 Headline paper-versus-observed numbers:
 
