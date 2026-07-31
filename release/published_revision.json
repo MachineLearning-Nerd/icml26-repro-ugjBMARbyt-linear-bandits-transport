@@ -1,15 +1,16 @@
 {
-  "allowlist_file_count": 96,
-  "allowlist_sha256": "eba7372d23708df034e644f14f6eb9ae58927466e3fe9c5432f166df00c49a00",
+  "allowlist_file_count": 102,
+  "allowlist_sha256": "cee80a68534af6efa4d54541730b1d270a98ded848efc9a4e3a1d734e202a17a",
   "candidate_file_count": 112,
-  "candidate_manifest_sha256": "8eac3d12df542b622678eba99deef95c5513db05aafca553440f129e897be302",
+  "candidate_manifest_sha256": "ad135512d59eeab299b81248e543cfe80c2840aa737d3b997e8f35c3169bde75",
   "evidence_revision": "d8492df9ec2efe77de1ee4fd37b36f542b0f5d86",
   "exact_remote_candidate_match": true,
   "last_live_judge_score": "12/12",
   "last_live_judged_revision": "1373e02110b2b0c18efb3eee76e889d3c214c85a",
   "parent_revision": "1373e02110b2b0c18efb3eee76e889d3c214c85a",
-  "published_revision": "ccc16ffe49641f056f51a7c97618985690b3f579",
+  "paired_readme_revision": "ccc16ffe49641f056f51a7c97618985690b3f579",
+  "published_revision": "741d38f232a54cd51281a4ea8c607bedad1339d9",
   "repo_id": "DineshAI/ugjBMARbyt",
   "status": "awaiting live judge",
-  "upload_manifest_sha256": "b62958de2fe29999e800044d0f13a35ce2d7b225b18aa687a5a68be5971bce34"
+  "upload_manifest_sha256": "50edad41f896f8b13f162cb7470a457aa1ccb21da722ff9cf9ff67b24bdd9c9b"
 }
