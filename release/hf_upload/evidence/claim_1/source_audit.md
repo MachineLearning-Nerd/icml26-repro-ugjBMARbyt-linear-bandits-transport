@@ -13,13 +13,18 @@ the contract.
 
 Exact source provenance:
 
+- ar5iv v1 HTML:
+  `https://ar5iv.labs.arxiv.org/html/2502.07397v1`
+- Fresh ar5iv HTML SHA-256:
+  `b8ac1371eae338c089931ad061935198b9f739b33080e88a40b2aed3e1b4d6b8`
 - PDF: `https://arxiv.org/pdf/2502.07397v1`
 - PDF SHA-256:
   `56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b`
 - Source archive: `https://export.arxiv.org/e-print/2502.07397v1`
 - Source archive SHA-256:
   `a0aacd1eef4f15691ab0bd6dca092a58da3bad467827c3f1d53d4d7ff899e06a`
-- Retrieved: 2026-07-23 with an explicit audit User-Agent.
+- Sources were retrieved with an explicit User-Agent; the ar5iv HTML was
+  freshly retrieved and reread on 2026-07-31.
 
 This check evaluates the literal v1 operator. The corrected unitary finite
 Fourier transform is a separate sibling experiment and is not evidence for

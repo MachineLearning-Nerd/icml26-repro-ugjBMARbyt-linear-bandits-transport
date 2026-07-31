@@ -17,9 +17,34 @@ v2 changes theorem numbering and some rates.
 | 5 | `FALSIFIED`: at `q=4`, tail `1.633` > bound `0.216` | `VERIFIED`: at `q=1`, residual `-0.091` |
 | 6 | `FALSIFIED`: feature collision and ill-typed width | `VERIFIED`: corrected determinant residual `4.44e-16`, coverage `8/8` |
 
+## Paired verdict map
+
+evidence/figures/paired-claim-map.svg
+
+The red side of every row is the exact v1 source contract that fails. The
+green side is a separately scoped claim that was rerun and verified. It is not
+a renamed version of the failed claim.
+
+## Quantitative contradictions
+
+evidence/figures/regret-definition-contradiction.svg
+
+For Claims 2 and 3, the plotted theorem RHS is an action-uniform upper bound,
+not a favorable lower estimate. The literal printed regret still exceeds it by
+`113,330,097.3` and `99,417,253.3`, respectively. Under the corrected
+per-round comparator definition, the repeated exact optimizer has regret `0`.
+
+evidence/figures/coefficient-tail-sweep.svg
+
+For Claim 5, the same admitted coefficient sequence is swept over
+`q in {1,2,4,8,16}`. The proof-derived inequality holds at `q=1` and fails at
+every tested `q>=2`; the independent checker reproduces the boundary.
+
 Every claim page links to text-only contracts, raw JSON, independent checker
 output, negative-control output, environment provenance, and source code under
-`evidence/`. `FALSIFIED` is used only for an exact failed contract;
+`evidence/`. The combined machine audit is
+`evidence/reverification_summary.json`. `FALSIFIED` is used only for an exact
+failed contract;
 `VERIFIED` is used only for the separately stated alternative contract.
 
 The prior judged paths remain present. No live judge score increase is claimed

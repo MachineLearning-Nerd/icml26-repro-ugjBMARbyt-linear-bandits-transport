@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+<title id="title">Regret definition contradiction</title>
+<desc id="desc">Generated directly from the public verifier JSON. Red reports the failed paper contract; green reports a separately scoped replacement claim.</desc>
+<rect width="1120" height="720" fill="white"/>
+<text x="60" y="54" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" fill="#172033" text-anchor="start">Printed regret exceeds a complete theorem-RHS upper bound</text>
+<text x="60" y="84" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="400" fill="#667085" text-anchor="start">Nonconstant 2×2 instance, zero noise, T = 100,000,000; vertical axis is logarithmic.</text>
+<line x1="118" y1="480" x2="1050" y2="480" stroke="#d0d5dd" stroke-width="1"/>
+<text x="102" y="485" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="end">10^5</text>
+<line x1="118" y1="369.375" x2="1050" y2="369.375" stroke="#d0d5dd" stroke-width="1"/>
+<text x="102" y="374.375" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="end">10^6</text>
+<line x1="118" y1="258.75" x2="1050" y2="258.75" stroke="#d0d5dd" stroke-width="1"/>
+<text x="102" y="263.75" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="end">10^7</text>
+<line x1="118" y1="148.125" x2="1050" y2="148.125" stroke="#d0d5dd" stroke-width="1"/>
+<text x="102" y="153.125" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="end">10^8</text>
+<rect x="238" y="141.944" width="92" height="338.056" rx="7" fill="#b42318"/>
+<text x="284" y="129.944" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#b42318" text-anchor="middle">113,728,636</text>
+<text x="284" y="509" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="middle">printed lower</text>
+<rect x="390" y="413.573" width="92" height="66.427" rx="7" fill="#175cd3"/>
+<text x="436" y="401.573" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#175cd3" text-anchor="middle">398,538</text>
+<text x="436" y="509" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="middle">RHS upper</text>
+<text x="360" y="544" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#172033" text-anchor="middle">Theorem 5.1</text>
+<rect x="218" y="566" width="284" height="42" rx="9" fill="#ecfdf3"/>
+<text x="360" y="592" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#067647" text-anchor="middle">replacement: repeated optimum regret = 0</text>
+<rect x="668" y="148.125" width="92" height="331.875" rx="7" fill="#b42318"/>
+<text x="714" y="136.125" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#b42318" text-anchor="middle">99,999,999</text>
+<text x="714" y="509" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="middle">printed lower</text>
+<rect x="820" y="395.319" width="92" height="84.6811" rx="7" fill="#175cd3"/>
+<text x="866" y="383.319" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#175cd3" text-anchor="middle">582,746</text>
+<text x="866" y="509" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#667085" text-anchor="middle">RHS upper</text>
+<text x="790" y="544" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" fill="#172033" text-anchor="middle">Theorem 5.2</text>
+<rect x="648" y="566" width="284" height="42" rx="9" fill="#ecfdf3"/>
+<text x="790" y="592" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#067647" text-anchor="middle">replacement: repeated optimum regret = 0</text>
+<rect x="265" y="632" width="670" height="55" rx="10" fill="#fff1f0"/>
+<text x="600" y="655" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="700" fill="#b42318" text-anchor="middle">Violation margins: 113,330,097 and 99,417,253</text>
+<text x="600" y="676" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="400" fill="#172033" text-anchor="middle">The contradiction comes from subtracting one comparator after summing T objectives.</text>
+</svg>

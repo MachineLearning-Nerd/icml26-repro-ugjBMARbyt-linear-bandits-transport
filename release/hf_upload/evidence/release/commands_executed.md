@@ -34,6 +34,17 @@ curl -L --fail --user-agent 'OpenResearch-Reproduction/1.0 (claim-audit; no auto
 curl -L --fail --user-agent 'OpenResearch-Reproduction/1.0 (claim-audit; no automated bulk access)' https://ar5iv.labs.arxiv.org/html/2502.07397
 ```
 
+The final six-claim reread used the exact v1 ar5iv page:
+
+```bash
+curl -sL -A 'Mozilla/5.0' https://ar5iv.labs.arxiv.org/html/2502.07397v1
+sha256sum /tmp/ugjBMARbyt-paper-v1-recheck.html
+uv run python repro/src/verify_entucb.py
+```
+
+The fresh HTML SHA-256 was
+`b8ac1371eae338c089931ad061935198b9f739b33080e88a40b2aed3e1b4d6b8`.
+
 The verdict dataset was downloaded at revision
 `049daca31e54a573b7e7da737aa08972f2cbe401` and filtered in Python with the
 exact predicate:

@@ -20,6 +20,7 @@ from claim1_fourier import (
 from claim23_regret_bounds import evaluate_claims_2_and_3
 from claim45_basis_rates import evaluate_claims_4_and_5
 from claim6_confidence import evaluate_confidence_contract
+from make_public_evidence_svgs import make_public_evidence_svgs
 from make_report_figures import make_all_figures
 from release_gate import run_release_gate
 
@@ -706,13 +707,14 @@ def run() -> int:
         f"git_sha={git_sha}"
     )
     figure_paths = make_all_figures(ROOT)
+    public_figure_paths = make_public_evidence_svgs(ROOT)
     release_gate = run_release_gate(ROOT)
     print(
         "ORX_RELEASE_GATE "
         f"internal_ready={str(release_gate['internal_ready']).lower()} "
         f"gate_ready={str(release_gate['gate_ready']).lower()} "
         f"upload_files={release_gate['upload_file_count']} "
-        f"figures={len(figure_paths)} "
+        f"figures={len(figure_paths) + len(public_figure_paths)} "
         f"subset={str(release_gate['subset_check'].get('passed', False)).lower()} "
         "published=false"
     )

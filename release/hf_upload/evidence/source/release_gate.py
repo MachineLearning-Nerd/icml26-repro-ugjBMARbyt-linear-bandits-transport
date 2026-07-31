@@ -12,7 +12,7 @@ from pathlib import Path
 import matplotlib.image as mpimg
 
 
-TEXT_SUFFIXES = {".json", ".md", ".py", ".txt", ".toml", ".lock"}
+TEXT_SUFFIXES = {".json", ".md", ".py", ".txt", ".toml", ".lock", ".svg"}
 SECRET_PATTERNS = {
     "hugging_face_token": re.compile(r"hf_[A-Za-z0-9]{20,}"),
     "github_token": re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}"),
@@ -89,6 +89,7 @@ def run_release_gate(root: Path) -> dict:
         root / "repro" / "src" / "check_claim45_independent.py",
         root / "repro" / "src" / "check_claim6_independent.py",
         root / "repro" / "src" / "make_report_figures.py",
+        root / "repro" / "src" / "make_public_evidence_svgs.py",
         root / "repro" / "src" / "release_gate.py",
         root / "pyproject.toml",
         root / "uv.lock",
@@ -120,6 +121,13 @@ def run_release_gate(root: Path) -> dict:
             root / "release" / "protected_judged_manifest.sha256",
             evidence_root / "release" / "protected_judged_manifest.txt",
         )
+
+    for source in sorted((repository_evidence / "figures").glob("*.svg")):
+        _copy_text(source, evidence / "figures" / source.name)
+    _copy_text(
+        repository_evidence / "reverification_summary.json",
+        evidence / "reverification_summary.json",
+    )
 
     for source in sorted((root / "pages").rglob("*.md")):
         _copy_text(source, upload / source.relative_to(root))

@@ -1,6 +1,8 @@
 # Provenance and limitations
 
 - Paper contract: arXiv `2502.07397v1`.
+- Fresh ar5iv v1 HTML SHA-256:
+  `b8ac1371eae338c089931ad061935198b9f739b33080e88a40b2aed3e1b4d6b8`.
 - V1 PDF SHA-256:
   `56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b`.
 - Fixed command: `uv run python repro/src/verify_entucb.py`.

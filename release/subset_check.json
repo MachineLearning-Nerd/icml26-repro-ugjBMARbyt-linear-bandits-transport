@@ -1,15 +1,22 @@
 {
-  "added_path_count": 0,
-  "candidate_path_count": 112,
-  "candidate_tree": "DineshAI/ugjBMARbyt@ccc16ffe plus paired text overlay",
-  "changed_existing_path_count": 4,
-  "comparison": "relative path inclusion plus SHA-256 equality outside the text-only upload allowlist",
+  "added_path_count": 5,
+  "candidate_path_count": 117,
+  "candidate_tree": "DineshAI/ugjBMARbyt@741d38f plus 107-path text overlay",
+  "changed_existing_path_count": 18,
+  "comparison": "relative-path inclusion, SHA-256 equality for immutable judged paths, and prior-page-tree inclusion for the additive logbook",
   "live_path_count": 112,
-  "live_revision": "ccc16ffe49641f056f51a7c97618985690b3f579",
-  "logbook_exact_copy": true,
+  "live_revision": "741d38f232a54cd51281a4ea8c607bedad1339d9",
+  "logbook_exact_copy_of_live_revision": true,
   "missing_paths": [],
   "passed": true,
-  "status": "current live HF tree is a subset of the additive paired candidate",
-  "unchanged_live_hash_count": 108,
-  "updated_path_reason": "public score prose records the immutable 12/12 verdict at revision 1373e021; no path is added or removed"
+  "prior_judged_page_tree_subset": true,
+  "protected_judged_path_count": 17,
+  "protected_judged_immutable_hash_count": 15,
+  "protected_mutable_paths": [
+    "README.md",
+    "logbook.json"
+  ],
+  "protected_mutable_paths_check": "README.md is omitted from the overlay and therefore remains at the live revision; logbook.json is an exact copy of the live additive tree and contains every prior judged page node",
+  "status": "current live HF tree and prior judged page tree are subsets of the additive candidate",
+  "unchanged_overlay_hash_count": 84
 }
