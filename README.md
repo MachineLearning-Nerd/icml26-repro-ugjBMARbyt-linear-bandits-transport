@@ -10,14 +10,16 @@ features and was judged 5/12. The new cumulative local-CPU suite solves real
 confidence, determinant, entropy-schedule, and regret expressions, and runs an
 independent checker plus a failing control for every claim.
 
-Assessment: all six **literal v1** contracts are `FALSIFIED`. This is not a
-claim that repaired OFUL or unitary-Fourier results are false, and it is not a
-new live judge score. The current arXiv v2 changes several statements.
+Assessment: all six **literal v1** contracts remain `FALSIFIED`, and six
+different, explicitly scoped replacement claims are `VERIFIED`. Every pair has
+raw traces, an independent checker, and a negative control. This is not a new
+live judge score. The current arXiv v2 changes several statements.
 
 Published evidence:
 [`DineshAI/ugjBMARbyt@1373e021`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a).
-The exact 96-file text payload is awaiting live-judge evaluation; the last
-evaluated score remains 5/12 at the prior revision `e062355b`.
+That falsification-only revision remains public and preserved. The paired
+verdict revision is published additively; until it is judged, the last
+evaluated score remains 5/12 at revision `e062355b`.
 
 Headline paper-versus-observed numbers:
 
@@ -29,6 +31,19 @@ Headline paper-versus-observed numbers:
   `epsilon_t=0.5 t^{-0.5}`.
 - Corollary 5.3 predicts a finite-basis rate; its admitted 3×3 OT instance
   loses exactly `1` per round when the nonzero tail is omitted.
+
+Paired replacement claims:
+
+- a normalized `Z2 x Z2` Fourier transform preserves the audited pairing and
+  norm;
+- standard per-round entropic and Kantorovich regret are zero for the repeated
+  exact optimizers;
+- explicitly including all three nonzero coefficients gives zero tail and
+  zero regret;
+- the audited tail inequality holds at `q=1` and fails at every tested
+  `q>=2`; and
+- the corrected OFUL determinant identity holds and its radius covers all
+  eight enumerated noise paths.
 
 Compute: Apple ARM64 local CPU with one locked `uv` specification. The editable
 checkout has one repository-level `.venv`; `orx local` executes in isolated

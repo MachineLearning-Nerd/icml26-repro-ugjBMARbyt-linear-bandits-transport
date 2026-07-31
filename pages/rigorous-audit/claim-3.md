@@ -15,4 +15,11 @@ the confidence terms and the full `kappa=1` approximation term
 The contradiction is specific to the v1 displayed regret definition. The
 standard per-round comparator control has zero repeated-optimum regret.
 
+## Alternative verdict: VERIFIED
+
+On this audited nonconstant 2x2 instance, standard Kantorovich regret
+subtracting the optimum every round is zero for the repeated exact optimizer.
+The returned plan is evaluated directly; corrected regret and the
+printed-regret decomposition residual are both below `1e-12`.
+
 Evidence: `evidence/claim_3/`.

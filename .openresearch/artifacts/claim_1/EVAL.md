@@ -10,3 +10,7 @@ verdict is `FALSIFIED`, requiring:
 5. failure of the deliberately false identity-required negative control.
 
 Any missing condition exits nonzero and records `BLOCKED`, never `PASS`.
+
+The paired alternative is `VERIFIED` only when the normalized `Z2 x Z2`
+transform has pairing and isometry residuals below `1e-12`, the literal
+normalization fails by more than `1.8`, and the independent checker agrees.

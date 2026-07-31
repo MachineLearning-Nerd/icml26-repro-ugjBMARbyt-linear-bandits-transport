@@ -5,6 +5,8 @@ import cmath
 import math
 from typing import Iterable
 
+import numpy as np
+
 
 SUPPORT = ((0, 0), (0, 1), (1, 0), (1, 1))
 RHO = (0.25, 0.25, 0.25, 0.25)
@@ -95,4 +97,62 @@ def evaluate_literal_counterexample() -> dict:
             "output_squared_norm": transform_norm_sq,
             "squared_norm_residual": abs(phi_norm_sq - transform_norm_sq),
         },
+    }
+
+
+def evaluate_unitary_specialization() -> dict:
+    points = np.asarray(SUPPORT, dtype=float)
+    rho = np.asarray(RHO)
+    coupling = np.asarray(PI)
+    density = coupling / rho
+    cost = 1.0 + points[:, 0] + 2.0 * points[:, 1]
+    characters = np.exp(-1j * np.pi * (points @ points.T))
+    unitary = characters / math.sqrt(len(points))
+
+    transformed_cost = cost @ unitary
+    transformed_density = density @ unitary
+    direct_pairing = float(cost @ coupling)
+    fourier_pairing = np.sum(
+        rho * transformed_cost * np.conjugate(transformed_density)
+    )
+
+    probe = np.asarray(ZERO_MEAN_FUNCTION)
+    input_norm = float(np.sum(rho * np.abs(probe) ** 2))
+    output_norm = float(np.sum(rho * np.abs(probe @ unitary) ** 2))
+
+    literal_cost = (rho * cost) @ characters
+    literal_coupling = coupling @ characters
+    literal_pairing = np.sum(
+        rho * literal_cost * np.conjugate(literal_coupling)
+    )
+
+    return {
+        "claim": (
+            "On uniform Z2 x Z2, the normalized discrete Fourier transform "
+            "preserves the L2(rho) norm and the transport pairing when a "
+            "coupling is represented by its density d pi/d rho."
+        ),
+        "construction": {
+            "group": "Z2 x Z2",
+            "rho": rho.tolist(),
+            "coupling": coupling.tolist(),
+            "density": density.tolist(),
+            "cost": "c(x,y)=1+x+2y",
+            "kernel": "exp(-pi*i*<x,k>)/sqrt(4)",
+        },
+        "direct_pairing": direct_pairing,
+        "fourier_pairing_real": float(fourier_pairing.real),
+        "fourier_pairing_imag": float(fourier_pairing.imag),
+        "identity_residual": float(abs(fourier_pairing - direct_pairing)),
+        "input_squared_norm": input_norm,
+        "output_squared_norm": output_norm,
+        "isometry_residual": abs(input_norm - output_norm),
+        "literal_normalization_residual": float(
+            abs(literal_pairing - direct_pairing)
+        ),
+        "deviations_from_failed_claim": [
+            "finite-group character phase",
+            "unitary 1/sqrt(4) normalization",
+            "the coupling is represented by d pi/d rho",
+        ],
     }

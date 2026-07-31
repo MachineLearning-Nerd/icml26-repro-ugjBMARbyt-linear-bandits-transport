@@ -4,6 +4,10 @@
   "source_anchor": "Entropic regret definition and Theorem 5.1",
   "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
   "contract": "The displayed v1 regret, which sums T objectives but subtracts the entropic comparator once, must obey the displayed high-probability RHS for every admissible instance.",
+  "alternative_contract": {
+    "claim": "On the audited nonconstant 2x2 instance, standard entropic regret subtracting the optimum every round is zero for the repeated exact entropic optimizer.",
+    "VERIFIED": "The optimizer objective is recomputed from its plan, corrected regret and the printed-regret decomposition residual are below 1e-12, and an independent checker agrees."
+  },
   "verdict_rule": {
     "FALSIFIED": "An admissible OT instance has an action-independent lower bound on printed regret above a uniform upper bound on the full theorem RHS.",
     "VERIFIED": "The literal definition and theorem inequality are proved together.",

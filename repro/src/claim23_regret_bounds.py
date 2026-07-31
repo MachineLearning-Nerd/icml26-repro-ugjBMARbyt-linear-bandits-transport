@@ -147,6 +147,32 @@ def evaluate_claims_2_and_3() -> dict:
     # comparator, so these are lower bounds for any action sequence.
     entropic_printed_regret_lower = (horizon - 1) * entropic["objective"]
     kant_printed_regret_lower = (horizon - 1) * kant["objective"]
+    entropic_plan = np.asarray(entropic["plan"])
+    repeated_entropic_objective = float(
+        np.sum(entropic_plan * cost) + epsilon * _entropy(entropic_plan)
+    )
+    corrected_entropic_regret = horizon * (
+        repeated_entropic_objective - entropic["objective"]
+    )
+    entropic_decomposition_residual = abs(
+        entropic_printed_regret_lower
+        - (
+            corrected_entropic_regret
+            + (horizon - 1) * entropic["objective"]
+        )
+    )
+    kant_plan = np.asarray(kant["plan"])
+    repeated_kant_objective = float(np.sum(kant_plan * cost))
+    corrected_kant_regret = horizon * (
+        repeated_kant_objective - kant["objective"]
+    )
+    kant_decomposition_residual = abs(
+        kant_printed_regret_lower
+        - (
+            corrected_kant_regret
+            + (horizon - 1) * kant["objective"]
+        )
+    )
 
     lipschitz = _lipschitz_constant(cost)
     upper_renyi_dimension = 0.0  # finite support, as stated in the paper.
@@ -207,7 +233,18 @@ def evaluate_claims_2_and_3() -> dict:
             ],
             "violation_margin": entropic_printed_regret_lower
             - bound["theorem_5_1_rhs_upper"],
-            "corrected_repeated_optimum_regret": 0.0,
+            "alternative": {
+                "claim": (
+                    "On the audited nonconstant 2x2 instance, standard "
+                    "entropic regret subtracting the optimum every round is "
+                    "zero for the repeated exact entropic optimizer."
+                ),
+                "recomputed_repeated_objective": repeated_entropic_objective,
+                "corrected_repeated_optimum_regret": corrected_entropic_regret,
+                "printed_regret_decomposition_residual": (
+                    entropic_decomposition_residual
+                ),
+            },
         },
         "claim_3": {
             "paper_regret_definition": "sum_t R_t - Kant",
@@ -221,6 +258,17 @@ def evaluate_claims_2_and_3() -> dict:
             "approximation_term": approximation_term,
             "theorem_rhs_upper_for_every_action_sequence": theorem_52_upper,
             "violation_margin": kant_printed_regret_lower - theorem_52_upper,
-            "corrected_repeated_optimum_regret": 0.0,
+            "alternative": {
+                "claim": (
+                    "On the audited nonconstant 2x2 instance, standard "
+                    "Kantorovich regret subtracting the optimum every round "
+                    "is zero for the repeated exact Kantorovich optimizer."
+                ),
+                "recomputed_repeated_objective": repeated_kant_objective,
+                "corrected_repeated_optimum_regret": corrected_kant_regret,
+                "printed_regret_decomposition_residual": (
+                    kant_decomposition_residual
+                ),
+            },
         },
     }

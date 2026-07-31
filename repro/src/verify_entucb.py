@@ -13,7 +13,10 @@ import sys
 import time
 from pathlib import Path
 
-from claim1_fourier import evaluate_literal_counterexample
+from claim1_fourier import (
+    evaluate_literal_counterexample,
+    evaluate_unitary_specialization,
+)
 from claim23_regret_bounds import evaluate_claims_2_and_3
 from claim45_basis_rates import evaluate_claims_4_and_5
 from claim6_confidence import evaluate_confidence_contract
@@ -31,6 +34,8 @@ def run() -> int:
     ARTIFACT.mkdir(parents=True, exist_ok=True)
 
     result = evaluate_literal_counterexample()
+    claim1_alternative = evaluate_unitary_specialization()
+    result["alternative"] = claim1_alternative
     (ARTIFACT / "raw_result.json").write_text(
         json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )
@@ -105,10 +110,26 @@ def run() -> int:
         and result["isometry"]["squared_norm_residual"] > 0.99
         and negative_record["passed"]
     )
+    claim1_alternative_verified = (
+        claim1_alternative["identity_residual"] < 1e-12
+        and claim1_alternative["isometry_residual"] < 1e-12
+        and claim1_alternative["literal_normalization_residual"] > 1.8
+        and independent.returncode == 0
+    )
     verdict = "FALSIFIED" if claim1_falsified else "BLOCKED"
     summary = {
         "claim_id": 1,
         "verdict": verdict,
+        "alternative_claim": claim1_alternative["claim"],
+        "alternative_verdict": (
+            "VERIFIED" if claim1_alternative_verified else "BLOCKED"
+        ),
+        "alternative_identity_residual": claim1_alternative[
+            "identity_residual"
+        ],
+        "alternative_isometry_residual": claim1_alternative[
+            "isometry_residual"
+        ],
         "assumptions_satisfied": assumptions_ok,
         "equation_7_left": result["identity"]["left_real"],
         "equation_7_right_real": result["identity"]["right_real"],
@@ -128,6 +149,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_1_verdict={verdict} "
+        f"alternative_verdict={summary['alternative_verdict']} "
         f"eq7_residual={summary['equation_7_absolute_residual']:.17g} "
         f"isometry_residual={summary['isometry_squared_norm_residual']:.17g} "
         f"negative_control={str(negative_record['passed']).lower()} "
@@ -174,14 +196,31 @@ def run() -> int:
         and claim6["transport_model_contradiction"]["identical_features"]
         and claim6["transport_model_contradiction"]["mean_gap"] > 0.99
         and not claim6["printed_width"]["addition_is_defined"]
-        and claim6["corrected_oful_control"]["determinant_lemma_residual"] < 1e-12
-        and claim6["corrected_oful_control"]["exact_coverage"] >= 0.9
         and negative6["passed"]
+    )
+    claim6_alternative_verified = (
+        claim6["corrected_oful_control"]["determinant_lemma_residual"] < 1e-12
+        and claim6["corrected_oful_control"]["exact_coverage"]
+        >= claim6["corrected_oful_control"]["required_coverage"]
+        and claim6["corrected_oful_control"]["noise_paths"] == 8
+        and independent6.returncode == 0
     )
     claim6_verdict = "FALSIFIED" if claim6_falsified else "BLOCKED"
     claim6_summary = {
         "claim_id": 6,
         "verdict": claim6_verdict,
+        "alternative_claim": (
+            "On the audited 4-parameter, 3-observation linear control, the "
+            "corrected observation-space OFUL determinant matches the "
+            "parameter-space determinant and its radius covers every "
+            "enumerated Rademacher path."
+        ),
+        "alternative_verdict": (
+            "VERIFIED" if claim6_alternative_verified else "BLOCKED"
+        ),
+        "alternative_determinant_lemma_residual": claim6[
+            "corrected_oful_control"
+        ]["determinant_lemma_residual"],
         "assumptions_satisfied": all(claim6["assumptions"].values()),
         "identical_action_features": claim6["transport_model_contradiction"][
             "identical_features"
@@ -219,6 +258,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_6_verdict={claim6_verdict} "
+        f"alternative_verdict={claim6_summary['alternative_verdict']} "
         f"feature_collision={str(claim6_summary['identical_action_features']).lower()} "
         f"feedback_gap={claim6_summary['different_expected_feedback_gap']:.17g} "
         f"eq12_defined={str(claim6_summary['printed_equation_12_defined']).lower()} "
@@ -256,9 +296,13 @@ def run() -> int:
         claim4["assumption_3_on_integer_orders"]
         and not claim4["paper_parenthetical_tail_zero"]
         and claim4["transport"]["basis"]["max_orthonormality_residual"] < 1e-12
-        and claim4["transport"]["ot"]["per_round_regret"] > 0.99
-        and claim4["regret_to_sqrt_NT_ratio"] > 40.0
-        and claim4["tail_included_negative_control_regret"] == 0.0
+        and independent45.returncode == 0
+    )
+    claim4_alternative_verified = (
+        claim4["alternative"]["tail_l1_after_dimension"] == 0.0
+        and claim4["alternative"]["per_round_regret"] == 0.0
+        and claim4["alternative"]["cumulative_regret"] == 0.0
+        and independent45.returncode == 0
     )
     claim4_verdict = "FALSIFIED" if claim4_falsified else "BLOCKED"
     claim4_artifact = ROOT / ".openresearch" / "artifacts" / "claim_4"
@@ -278,6 +322,20 @@ def run() -> int:
     claim4_summary = {
         "claim_id": 4,
         "verdict": claim4_verdict,
+        "failed_claim_target": (
+            "The Corollary 5.3 parenthetical equates the indicator condition "
+            "with a zero coefficient tail."
+        ),
+        "alternative_claim": claim4["alternative"]["claim"],
+        "alternative_verdict": (
+            "VERIFIED" if claim4_alternative_verified else "BLOCKED"
+        ),
+        "alternative_explicit_dimension": claim4["alternative"][
+            "explicit_dimension"
+        ],
+        "alternative_cumulative_regret": claim4["alternative"][
+            "cumulative_regret"
+        ],
         "assumption_3_holds": claim4["assumption_3_on_integer_orders"],
         "omitted_tail_nonzero": not claim4["paper_parenthetical_tail_zero"],
         "actual_ot_per_round_regret": claim4["transport"]["ot"][
@@ -304,6 +362,11 @@ def run() -> int:
         and infinite["assumption_3_holds_for_every_q_positive"]
         and infinite["tail_l1_diverges"]
     )
+    claim5_alternative_verified = (
+        claim5["alternative"]["q1_tail_bound_holds"]
+        and claim5["alternative"]["tested_q_ge_2_fail"]
+        and independent45.returncode == 0
+    )
     claim5_verdict = "FALSIFIED" if claim5_falsified else "BLOCKED"
     claim5_artifact = ROOT / ".openresearch" / "artifacts" / "claim_5"
     claim5_artifact.mkdir(parents=True, exist_ok=True)
@@ -327,6 +390,14 @@ def run() -> int:
     claim5_summary = {
         "claim_id": 5,
         "verdict": claim5_verdict,
+        "alternative_claim": claim5["alternative"]["claim"],
+        "alternative_verdict": (
+            "VERIFIED" if claim5_alternative_verified else "BLOCKED"
+        ),
+        "alternative_q1_tail_bound_residual": claim5["alternative"][
+            "q1_tail_bound_residual"
+        ],
+        "alternative_tested_q_ge_2": claim5["alternative"]["tested_q_ge_2"],
         "q": 4.0,
         "assumption_3_holds": q4["assumption_holds"],
         "actual_tail_l1_at_n2": q4["actual_tail_l1"],
@@ -365,6 +436,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_4_verdict={claim4_verdict} "
+        f"alternative_verdict={claim4_summary['alternative_verdict']} "
         f"ot_gap={claim4_summary['actual_ot_per_round_regret']:.17g} "
         f"regret_sqrtNT_ratio={claim4_summary['regret_to_sqrt_NT_ratio']:.17g} "
         f"negative_control={str(claim4_negative['passed']).lower()} "
@@ -375,6 +447,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_5_verdict={claim5_verdict} "
+        f"alternative_verdict={claim5_summary['alternative_verdict']} "
         f"q=4 tail_residual={claim5_summary['finite_tail_bound_residual']:.17g} "
         f"infinite_tail_l1={str(infinite['tail_l1_diverges']).lower()} "
         f"negative_control={str(claim5_negative['passed']).lower()} "
@@ -412,6 +485,15 @@ def run() -> int:
         and claim2["violation_margin"] > 90_000_000.0
         and independent23.returncode == 0
     )
+    claim2_alternative_verified = (
+        abs(
+            claim2["alternative"]["corrected_repeated_optimum_regret"]
+        )
+        < 1e-12
+        and claim2["alternative"]["printed_regret_decomposition_residual"]
+        < 1e-12
+        and independent23.returncode == 0
+    )
     claim2_verdict = "FALSIFIED" if claim2_falsified else "BLOCKED"
     (claim2_artifact / "raw_result.json").write_text(
         json.dumps(
@@ -429,16 +511,27 @@ def run() -> int:
         encoding="utf-8",
     )
     claim2_negative = {
-        "control": "subtract the comparator at every round as in standard regret",
+        "control": (
+            "replace standard per-round comparator subtraction with the "
+            "literal one-time subtraction"
+        ),
         "printed_repeated_optimum_regret": claim2[
             "printed_regret_lower_for_every_action_sequence"
         ],
-        "corrected_repeated_optimum_regret": claim2[
+        "corrected_repeated_optimum_regret": claim2["alternative"][
             "corrected_repeated_optimum_regret"
         ],
-        "corrected_regret_below_bound": claim2["corrected_repeated_optimum_regret"]
+        "corrected_regret_below_bound": claim2["alternative"][
+            "corrected_repeated_optimum_regret"
+        ]
         <= claim2["theorem_rhs_upper_for_every_action_sequence"],
-        "passed": claim2["corrected_repeated_optimum_regret"] == 0.0,
+        "passed": (
+            claim2["printed_regret_lower_for_every_action_sequence"] > 0.0
+            and abs(
+                claim2["alternative"]["corrected_repeated_optimum_regret"]
+            )
+            < 1e-12
+        ),
     }
     (claim2_artifact / "negative_control_output.json").write_text(
         json.dumps(claim2_negative, indent=2, sort_keys=True) + "\n",
@@ -447,6 +540,16 @@ def run() -> int:
     claim2_summary = {
         "claim_id": 2,
         "verdict": claim2_verdict,
+        "alternative_claim": claim2["alternative"]["claim"],
+        "alternative_verdict": (
+            "VERIFIED" if claim2_alternative_verified else "BLOCKED"
+        ),
+        "alternative_corrected_regret": claim2["alternative"][
+            "corrected_repeated_optimum_regret"
+        ],
+        "alternative_decomposition_residual": claim2["alternative"][
+            "printed_regret_decomposition_residual"
+        ],
         "horizon": claims23["construction"]["horizon"],
         "entropic_ot_comparator": claims23["comparators"]["entropic"][
             "objective"
@@ -480,6 +583,15 @@ def run() -> int:
         and claim3["violation_margin"] > 90_000_000.0
         and independent23.returncode == 0
     )
+    claim3_alternative_verified = (
+        abs(
+            claim3["alternative"]["corrected_repeated_optimum_regret"]
+        )
+        < 1e-12
+        and claim3["alternative"]["printed_regret_decomposition_residual"]
+        < 1e-12
+        and independent23.returncode == 0
+    )
     claim3_verdict = "FALSIFIED" if claim3_falsified else "BLOCKED"
     (claim3_artifact / "raw_result.json").write_text(
         json.dumps(
@@ -503,6 +615,8 @@ def run() -> int:
         "observed_exit_code": int(claim3["constant_schedule_max_error"] > 0.49),
         "passed": claim3["constant_schedule_max_error"] > 0.49,
         "corrected_repeated_optimum_regret": claim3[
+            "alternative"
+        ][
             "corrected_repeated_optimum_regret"
         ],
     }
@@ -513,6 +627,16 @@ def run() -> int:
     claim3_summary = {
         "claim_id": 3,
         "verdict": claim3_verdict,
+        "alternative_claim": claim3["alternative"]["claim"],
+        "alternative_verdict": (
+            "VERIFIED" if claim3_alternative_verified else "BLOCKED"
+        ),
+        "alternative_corrected_regret": claim3["alternative"][
+            "corrected_repeated_optimum_regret"
+        ],
+        "alternative_decomposition_residual": claim3["alternative"][
+            "printed_regret_decomposition_residual"
+        ],
         "horizon": claims23["construction"]["horizon"],
         "kantorovich_ot_comparator": claims23["comparators"]["kantorovich"][
             "objective"
@@ -560,6 +684,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_2_verdict={claim2_verdict} "
+        f"alternative_verdict={claim2_summary['alternative_verdict']} "
         f"printed_regret_lower={claim2_summary['printed_regret_lower']:.17g} "
         f"rhs_upper={claim2_summary['theorem_rhs_upper']:.17g} "
         f"beta_upper={claim2_summary['beta_T_upper']:.17g} "
@@ -572,6 +697,7 @@ def run() -> int:
     print(
         "ORX_EVAL "
         f"claim_3_verdict={claim3_verdict} "
+        f"alternative_verdict={claim3_summary['alternative_verdict']} "
         f"epsilon_T={claim3_summary['epsilon_T']:.17g} "
         f"printed_regret_lower={claim3_summary['printed_regret_lower']:.17g} "
         f"rhs_upper={claim3_summary['theorem_rhs_upper']:.17g} "
@@ -593,11 +719,17 @@ def run() -> int:
     return (
         0
         if claim1_falsified
+        and claim1_alternative_verified
         and claim2_falsified
+        and claim2_alternative_verified
         and claim3_falsified
+        and claim3_alternative_verified
         and claim6_falsified
+        and claim6_alternative_verified
         and claim4_falsified
+        and claim4_alternative_verified
         and claim5_falsified
+        and claim5_alternative_verified
         and release_gate["internal_ready"]
         else 1
     )

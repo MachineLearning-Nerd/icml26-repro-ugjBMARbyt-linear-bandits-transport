@@ -128,4 +128,12 @@ and the 112-file candidate manifest:
 1373e02110b2b0c18efb3eee76e889d3c214c85a
 ```
 
-No delete operation, second Space, GPU job, or score claim was made.
+No delete operation, duplicate Space, GPU job, or score claim was made.
+
+## Paired verdict release
+
+The same fixed CPU command now requires all six literal verdicts to remain
+`FALSIFIED` and all six separately stated alternatives to be `VERIFIED`.
+Publication is restricted to an additive, text-only commit on the existing
+Space. The exact live parent revision is downloaded again before publication;
+every prior path must remain present in the candidate and final revision.

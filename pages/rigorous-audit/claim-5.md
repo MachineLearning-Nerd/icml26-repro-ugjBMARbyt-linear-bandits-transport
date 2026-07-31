@@ -15,4 +15,10 @@ diverges. The premise therefore does not encode the decay used in the proof.
 The finite pre-entry schedule slope is diagnostic only; the verdict rests on
 the exact premise-to-tail counterexamples.
 
+## Alternative verdict: VERIFIED
+
+For the audited finite coefficient sequence, the paper-derived tail inequality
+holds at `q=1`: residual `-0.091020`. It fails at every tested
+`q in {2,4,8,16}`. An independent arithmetic checker reproduces this boundary.
+
 Evidence: `evidence/claim_5/`.
