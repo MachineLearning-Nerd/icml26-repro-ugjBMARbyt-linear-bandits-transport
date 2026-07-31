@@ -1,15 +1,15 @@
 {
-  "allowlist_file_count": 107,
-  "allowlist_sha256": "4c932355f6d820be843ba6ab221fed3fd03010b218ff66c9fbcd221f7e78f69d",
+  "allowlist_file_count": 108,
+  "allowlist_sha256": "a96dc18e7a7b351e2b8a054e0b61d4e9d75d5eb39e8c491dc466278ebeb22e15",
   "candidate_file_count": 117,
-  "candidate_manifest_sha256": "303858a1b11d7f5ed2b545f20d006035aef6b8dd91d372947f8df7404c499ff1",
+  "candidate_manifest_sha256": "dfaee016566cffb37866a6c4726e6d1c717550ca4d5ed1351687e2490553bedd",
   "exact_remote_candidate_match": true,
   "last_live_judge_score": "12/12",
-  "last_live_judged_revision": "1373e02110b2b0c18efb3eee76e889d3c214c85a",
-  "parent_revision": "741d38f232a54cd51281a4ea8c607bedad1339d9",
-  "published_revision": "f2966cb9b02d22c21eabb656f6c72614299d4c24",
+  "last_live_judged_revision": "741d38f232a54cd51281a4ea8c607bedad1339d9",
+  "parent_revision": "76e04e6197bab451830429b0f89a24b77c0200dd",
+  "published_revision": "21f43cbde0a737cfa1068738d35cd6676183d078",
   "repo_id": "DineshAI/ugjBMARbyt",
   "status": "awaiting live judge",
-  "upload_manifest_sha256": "d68452ef0239ebbac64a3b9eaf5fda6979c9e3a6805acf6fff7b29aa9dfcd57c",
-  "verified_path_count": 107
+  "upload_manifest_sha256": "00a104fd6a3628833fef54e42f5c6ad3b24f774cdbe2b66fc63b7c86babfbe71",
+  "verified_path_count": 108
 }
