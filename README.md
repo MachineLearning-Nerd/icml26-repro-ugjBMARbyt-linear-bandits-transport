@@ -27,14 +27,15 @@ independent checker plus a failing control for every claim.
 
 Assessment: all six **literal v1** contracts remain `FALSIFIED`, and six
 different, explicitly scoped replacement claims are `VERIFIED`. Every pair has
-raw traces, an independent checker, and a negative control. This is not a new
-live judge score. The current arXiv v2 changes several statements.
+raw traces, an independent checker, and a negative control. The current arXiv
+v2 changes several statements.
 
 Published evidence:
 [`DineshAI/ugjBMARbyt@1373e021`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a).
 That falsification-only revision remains public and preserved. The paired
-verdict revision is published additively; until it is judged, the last
-evaluated score remains 5/12 at revision `e062355b`.
+verdict revision is published additively. The live judge awarded revision
+`1373e021` **12/12**, accepting all six literal claims as `FALSIFIED`; the
+newer paired-alternative revision is awaiting evaluation.
 
 Headline paper-versus-observed numbers:
 
@@ -75,7 +76,7 @@ or the [self-contained marimo tutorial](notebooks/entucb_claim_audit.py).
 
 | Branch / experiment | Purpose or change | Exact run command | Assessment / outcome | Compute |
 |---|---|---|---|---|
-| `master` | Publication surface | Not run as an experiment (publication surface) | Mirrors final evidence and HF revision `1373e021`; awaiting judge | — |
+| `master` | Publication surface | Not run as an experiment (publication surface) | Mirrors current paired HF evidence; `1373e021` was judged 12/12 | — |
 | [`orx/frozen-judged-code-baseline`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/frozen-judged-code-baseline) | Freeze judged code and lock `uv` | `uv run python repro/src/verify_entucb.py` | Reproduced historical toy output; no claim upgraded | local CPU, 10 s |
 | [`orx/literal-v1-fourier-contract`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/literal-v1-fourier-contract) | Literal Fourier counterexample | `uv run python repro/src/verify_entucb.py` | Claim 1 `FALSIFIED` | local CPU |
 | [`orx/unitary-discrete-fourier-specialization`](https://github.com/MachineLearning-Nerd/icml26-repro-ugjBMARbyt-linear-bandits-transport/tree/orx/unitary-discrete-fourier-specialization) | Corrected transform control | `uv run python repro/src/verify_entucb.py` | Corrected specialization verified; literal claim blocked | local CPU |

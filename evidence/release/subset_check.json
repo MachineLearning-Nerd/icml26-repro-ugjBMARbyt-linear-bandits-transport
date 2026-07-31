@@ -1,15 +1,15 @@
 {
   "added_path_count": 0,
   "candidate_path_count": 112,
-  "candidate_tree": "DineshAI/ugjBMARbyt@1373e021 plus release/hf_upload overlay",
-  "changed_existing_path_count": 56,
+  "candidate_tree": "DineshAI/ugjBMARbyt@ccc16ffe plus paired text overlay",
+  "changed_existing_path_count": 4,
   "comparison": "relative path inclusion plus SHA-256 equality outside the text-only upload allowlist",
   "live_path_count": 112,
-  "live_revision": "1373e02110b2b0c18efb3eee76e889d3c214c85a",
+  "live_revision": "ccc16ffe49641f056f51a7c97618985690b3f579",
   "logbook_exact_copy": true,
   "missing_paths": [],
   "passed": true,
   "status": "current live HF tree is a subset of the additive paired candidate",
-  "unchanged_live_hash_count": 56,
-  "updated_path_reason": "56 existing audit evidence and rigorous-audit page paths gain paired VERIFIED alternatives; no path is added or removed"
+  "unchanged_live_hash_count": 108,
+  "updated_path_reason": "public score prose records the immutable 12/12 verdict at revision 1373e021; no path is added or removed"
 }

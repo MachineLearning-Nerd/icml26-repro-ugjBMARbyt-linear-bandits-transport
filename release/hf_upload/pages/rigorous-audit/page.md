@@ -23,4 +23,6 @@ output, negative-control output, environment provenance, and source code under
 `VERIFIED` is used only for the separately stated alternative contract.
 
 The prior judged paths remain present. No live judge score increase is claimed
-before re-evaluation.
+for the paired alternatives before re-evaluation. The preserved
+falsification-only revision `1373e021` was judged 12/12, with all six source
+claims accepted as `FALSIFIED`.

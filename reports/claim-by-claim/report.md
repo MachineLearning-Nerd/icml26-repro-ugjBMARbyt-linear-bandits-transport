@@ -151,8 +151,9 @@ radius loses coverage. That isolates the source failure from the checker.
 These verdicts are reproducible local evidence, not a live judge score. The
 earlier 96-file falsification-only payload was published as Hugging Face revision
 [`1373e02110b2b0c18efb3eee76e889d3c214c85a`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a)
-and remains preserved. This paired-verdict update is additive. Until it is
-evaluated, the last judged score remains 5/12.
+and remains preserved. The live judge awarded that revision 12/12, accepting
+all six literal claims as `FALSIFIED`. This paired-verdict update is additive
+and is awaiting evaluation.
 
 ## Provenance
 
