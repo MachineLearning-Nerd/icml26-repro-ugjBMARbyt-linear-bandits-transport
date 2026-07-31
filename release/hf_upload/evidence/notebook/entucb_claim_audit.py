@@ -39,17 +39,20 @@ def _(mo):
 @app.cell
 def _(claim, mo):
     evidence = {
-        1: ("Fourier identity", "direct pairing 0; proposed pairing 1/2"),
-        2: ("Entropic regret", "literal lower 113.7M; complete RHS upper 0.399M"),
-        3: ("Kantorovich regret", "epsilon_T=5e-5; lower 100.0M; RHS upper 0.583M"),
-        4: ("Finite basis", "actual 3x3 OT regret is 1 per round"),
-        5: ("Coefficient decay", "admitted tail 1.633; asserted bound 0.216"),
-        6: ("Confidence set", "identical features; expected feedback differs by 1"),
+        1: ("Fourier identity", "failed residual 1/2; normalized alternative residual 1.23e-32"),
+        2: ("Entropic regret", "literal lower 113.7M > RHS 0.399M; standard alternative regret 0"),
+        3: ("Kantorovich regret", "literal lower 100.0M > RHS 0.583M; standard alternative regret 0"),
+        4: ("Finite basis", "omitted-tail regret 1/round; explicit full-model regret 0"),
+        5: ("Coefficient decay", "q=4 residual +1.417; q=1 alternative residual -0.091"),
+        6: ("Confidence set", "printed formula is ill-typed; corrected alternative covers 8/8 paths"),
     }
     title, result = evidence[claim.value]
     mo.callout(
-        mo.md(f"**Claim {claim.value} — {title}: FALSIFIED**\n\n{result}"),
-        kind="danger",
+        mo.md(
+            f"**Claim {claim.value} — {title}: source claim FALSIFIED; "
+            f"different claim VERIFIED**\n\n{result}"
+        ),
+        kind="warn",
     )
     return
 
@@ -98,8 +101,8 @@ def _(mo):
     mo.md(r"""
     ## What the verdict does—and does not—say
 
-    The six verdicts apply to the literal v1 contracts. Corrected controls
-    behave normally:
+    Each failed literal v1 contract is paired with a separately worded,
+    machine-checked claim that holds:
 
     - a unitary transform satisfies Parseval;
     - a standard OFUL radius covers all enumerated Rademacher paths;

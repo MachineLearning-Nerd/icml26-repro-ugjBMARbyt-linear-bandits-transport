@@ -1,18 +1,15 @@
 {
+  "added_path_count": 0,
   "candidate_path_count": 112,
-  "candidate_tree": "project/candidate-space-e062-plus-rigorous-v1-audit",
-  "changed_old_paths": [
-    "logbook.json"
-  ],
-  "comparison": "relative file-path inclusion plus SHA-256 equality for old paths not intentionally replaced",
-  "judged_revision": "e062355ba89b21f22d9d2a840d086d6fa1fec65b",
+  "candidate_tree": "DineshAI/ugjBMARbyt@1373e021 plus release/hf_upload overlay",
+  "changed_existing_path_count": 56,
+  "comparison": "relative path inclusion plus SHA-256 equality outside the text-only upload allowlist",
+  "live_path_count": 112,
+  "live_revision": "1373e02110b2b0c18efb3eee76e889d3c214c85a",
+  "logbook_exact_copy": true,
   "missing_paths": [],
-  "old_path_count": 17,
   "passed": true,
-  "prior_logbook_exact_copy": true,
-  "protected_tree": "project/protected/judged-space-e062355ba89b21f22d9d2a840d086d6fa1fec65b",
-  "unchanged_old_hash_count": 16,
-  "updated_path_reason": {
-    "logbook.json": "adds navigation to the new audit; the exact prior file is preserved at evidence/prior-judged-revision/logbook.json"
-  }
+  "status": "current live HF tree is a subset of the additive paired candidate",
+  "unchanged_live_hash_count": 56,
+  "updated_path_reason": "56 existing audit evidence and rigorous-audit page paths gain paired VERIFIED alternatives; no path is added or removed"
 }

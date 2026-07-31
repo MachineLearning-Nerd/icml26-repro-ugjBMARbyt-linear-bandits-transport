@@ -14,4 +14,11 @@ covers all eight Rademacher noise paths: exact coverage `1.0` at required
 coverage `0.9`. A five-percent radius loses coverage. This control separates
 the source contradiction from a broken RLS implementation.
 
+## Alternative verdict: VERIFIED
+
+On the audited 4-parameter, 3-observation linear control, the corrected
+observation-space and parameter-space log determinants agree within
+`4.44e-16`; the confidence radius covers all `8/8` Rademacher paths. An
+independent checker reproduces both facts.
+
 Evidence: `evidence/claim_6/`.

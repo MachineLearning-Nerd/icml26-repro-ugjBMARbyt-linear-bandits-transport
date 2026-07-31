@@ -1,4 +1,43 @@
 {
+  "alternative": {
+    "claim": "On uniform Z2 x Z2, the normalized discrete Fourier transform preserves the L2(rho) norm and the transport pairing when a coupling is represented by its density d pi/d rho.",
+    "construction": {
+      "cost": "c(x,y)=1+x+2y",
+      "coupling": [
+        0.5,
+        0.0,
+        0.0,
+        0.5
+      ],
+      "density": [
+        2.0,
+        0.0,
+        0.0,
+        2.0
+      ],
+      "group": "Z2 x Z2",
+      "kernel": "exp(-pi*i*<x,k>)/sqrt(4)",
+      "rho": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "deviations_from_failed_claim": [
+      "finite-group character phase",
+      "unitary 1/sqrt(4) normalization",
+      "the coupling is represented by d pi/d rho"
+    ],
+    "direct_pairing": 2.5,
+    "fourier_pairing_imag": 1.232595164407831e-32,
+    "fourier_pairing_real": 2.5,
+    "identity_residual": 1.232595164407831e-32,
+    "input_squared_norm": 1.0,
+    "isometry_residual": 0.0,
+    "literal_normalization_residual": 1.875,
+    "output_squared_norm": 1.0
+  },
   "assumptions": {
     "cost_is_continuous_and_L2_rho": true,
     "pi_density_is_L2_rho": true,

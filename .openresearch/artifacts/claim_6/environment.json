@@ -1,11 +1,11 @@
 {
   "command": "uv run python repro/src/verify_entucb.py",
   "exhaustive_noise_paths": 8,
-  "git_sha": "74d507d40dae891f0fa541f8a6e33d46eaadbfda",
+  "git_sha": "e1c74e0b200233d259cef9debf198eb4bd386ee1",
   "logical_cpu_count": 8,
   "platform": "macOS-26.5.2-arm64-arm-64bit",
   "processor": "arm",
   "python": "3.12.11",
   "seeds": [],
-  "wall_seconds": 1.5727230830234475
+  "wall_seconds": 0.27337558299768716
 }

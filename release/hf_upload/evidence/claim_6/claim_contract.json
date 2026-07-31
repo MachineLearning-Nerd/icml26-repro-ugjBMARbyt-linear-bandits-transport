@@ -9,6 +9,10 @@
     "width": "the printed Equation (12) log determinant",
     "coverage": "the confidence construction must be defined and calibrated on every admissible history"
   },
+  "alternative_contract": {
+    "claim": "On the audited 4-parameter, 3-observation control, the corrected observation-space OFUL determinant matches the parameter-space determinant and its radius covers all eight Rademacher paths.",
+    "VERIFIED": "The determinant residual is below 1e-12, observed coverage is at least 0.9 over exactly eight paths, and an independent checker agrees."
+  },
   "verdict_rule": {
     "FALSIFIED": "An admissible transport history contradicts the linear observation model or makes the printed width undefined.",
     "VERIFIED": "The literal construction is well-defined and coverage is proved over the quantified domain.",

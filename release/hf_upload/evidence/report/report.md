@@ -7,13 +7,13 @@ kind of confidence geometry and regret rates as linear bandits. The original
 Space answered with six small random-feature checks. The live judge correctly
 classified five as toy evidence and one as inconclusive.
 
-This reproduction takes a different route: it audits the exact arXiv v1
-statements selected by the judge, translates every quantifier into a
-machine-checkable contract, and searches for either a proof-preserving
-specialization or an admissible counterexample. All six literal v1 contracts
-are falsified. That conclusion is narrower than “the research direction is
-wrong”: several failures are source-definition or normalization errors, and
-the current arXiv v2 has changed some statements.
+This reproduction audits the exact arXiv v1 statements selected by the judge,
+translates every quantifier into a machine-checkable contract, and tests an
+admissible counterexample alongside a distinct replacement claim. All six
+literal v1 contracts are falsified, and all six replacement claims are
+verified. That conclusion is narrower than “the research direction is wrong”:
+several failures are source-definition or normalization errors, and the
+current arXiv v2 has changed some statements.
 
 ## What was implemented
 
@@ -137,20 +137,22 @@ observation-space OFUL formula satisfies the determinant lemma and covers all
 eight Rademacher noise paths (coverage 1.0 at a required 0.9); a five-percent
 radius loses coverage. That isolates the source failure from the checker.
 
-## Claim results and limits
+## Paired claim results
 
-| Claim | Literal v1 verdict | Decisive evidence | What is not concluded |
-|---|---|---|---|
-| 1 | FALSIFIED | Eq. (7) residual `1/2`; norm residual `1` | corrected Haar/unitary transform |
-| 2 | FALSIFIED | printed regret lower `113.7M` > full RHS upper `0.399M` | standard per-round regret theorem |
-| 3 | FALSIFIED | exact schedule; lower `100.0M` > RHS upper `0.583M` | revised v2 theorem |
-| 4 | FALSIFIED | admitted tail causes actual OT regret `1/round` | genuinely finite OFUL model |
-| 5 | FALSIFIED | admitted tail exceeds bound; admitted `L2` tail is not `l1` | repaired source condition |
-| 6 | FALSIFIED | feature collision and ill-typed width; corrected control passes | conventional OFUL confidence set |
+| Claim | Failed claim and trace | Different claim that holds and trace |
+|---|---|---|
+| 1 | `FALSIFIED`: Eq. (7) residual `1/2`; norm residual `1` | `VERIFIED`: normalized `Z2 x Z2` pairing residual `1.23e-32`; norm residual `0` |
+| 2 | `FALSIFIED`: printed regret lower `113.7M` > full RHS upper `0.399M` | `VERIFIED`: repeated entropic optimizer has standard regret `0`; decomposition residual `0` |
+| 3 | `FALSIFIED`: exact schedule; lower `100.0M` > RHS upper `0.583M` | `VERIFIED`: repeated Kantorovich optimizer has standard regret `0`; decomposition residual `0` |
+| 4 | `FALSIFIED`: integer-order condition holds with a nonzero coefficient tail | `VERIFIED`: include all three nonzero coefficients; tail `0`, regret `0` |
+| 5 | `FALSIFIED`: at `q=4`, tail `1.633` exceeds bound `0.216` | `VERIFIED`: same finite-sequence inequality holds at `q=1`; residual `-0.091` |
+| 6 | `FALSIFIED`: feature collision and ill-typed printed width | `VERIFIED`: corrected determinant residual `4.44e-16`; coverage `8/8` |
 
-These verdicts are reproducible local evidence. They are not a live judge
-score, and the existing Hugging Face revision remains unchanged until explicit
-publication approval.
+These verdicts are reproducible local evidence, not a live judge score. The
+earlier 96-file falsification-only payload was published as Hugging Face revision
+[`1373e02110b2b0c18efb3eee76e889d3c214c85a`](https://huggingface.co/spaces/DineshAI/ugjBMARbyt/commit/1373e02110b2b0c18efb3eee76e889d3c214c85a)
+and remains preserved. This paired-verdict update is additive. Until it is
+evaluated, the last judged score remains 5/12.
 
 ## Provenance
 

@@ -11,6 +11,10 @@
       "<c,pi> equals <F_rho c(-dot), F pi>_L2(rho)"
     ]
   },
+  "alternative_contract": {
+    "claim": "On uniform Z2 x Z2, the normalized discrete Fourier transform preserves the L2(rho) norm and transport pairing when pi is represented by d pi/d rho.",
+    "VERIFIED": "Both independently computed residuals are below 1e-12 while the literal-normalization mutation has residual above 1.8."
+  },
   "verdict_rule": {
     "FALSIFIED": "One construction satisfying every stated assumption has a nonzero exact residual in either universal property, confirmed independently.",
     "VERIFIED": "A proof covers every quantified admissible rho, c, and pi.",

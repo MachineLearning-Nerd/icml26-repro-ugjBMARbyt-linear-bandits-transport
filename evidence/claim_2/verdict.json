@@ -1,5 +1,9 @@
 {
   "C_bar": 1.5811388300841898,
+  "alternative_claim": "On the audited nonconstant 2x2 instance, standard entropic regret subtracting the optimum every round is zero for the repeated exact entropic optimizer.",
+  "alternative_corrected_regret": 0.0,
+  "alternative_decomposition_residual": 0.0,
+  "alternative_verdict": "VERIFIED",
   "beta_T_upper": 1.5811475200384244,
   "claim_id": 2,
   "entropic_ot_comparator": 1.1372863664141655,

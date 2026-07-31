@@ -1,5 +1,5 @@
 {
-  "control": "subtract the comparator at every round as in standard regret",
+  "control": "replace standard per-round comparator subtraction with the literal one-time subtraction",
   "corrected_regret_below_bound": true,
   "corrected_repeated_optimum_regret": 0.0,
   "passed": true,

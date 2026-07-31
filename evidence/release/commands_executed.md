@@ -118,5 +118,22 @@ git status --short
 git rev-parse HEAD
 ```
 
-The full Hugging Face operation is deliberately absent: no upload or
-publication command has been executed.
+After explicit user approval, the Hugging Face Hub Python API created one
+atomic Space commit containing only the 96 manifest-verified UTF-8 paths, with
+`parent_commit=e062355ba89b21f22d9d2a840d086d6fa1fec65b`. The resulting
+revision was downloaded and checked against both the 96-file upload manifest
+and the 112-file candidate manifest:
+
+```text
+1373e02110b2b0c18efb3eee76e889d3c214c85a
+```
+
+No delete operation, duplicate Space, GPU job, or score claim was made.
+
+## Paired verdict release
+
+The same fixed CPU command now requires all six literal verdicts to remain
+`FALSIFIED` and all six separately stated alternatives to be `VERIFIED`.
+Publication is restricted to an additive, text-only commit on the existing
+Space. The exact live parent revision is downloaded again before publication;
+every prior path must remain present in the candidate and final revision.

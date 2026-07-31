@@ -225,6 +225,21 @@ def evaluate_claims_4_and_5() -> dict:
             "tail_included_negative_control_regret": construction["ot"][
                 "included_tail_regret"
             ],
+            "alternative": {
+                "claim": (
+                    "On the audited 3x3 instance, explicitly including every "
+                    "nonzero coefficient gives a zero coefficient tail and "
+                    "recovers the full-cost optimizer with zero regret."
+                ),
+                "explicit_dimension": 3,
+                "tail_l1_after_dimension": 0.0,
+                "per_round_regret": construction["ot"][
+                    "included_tail_regret"
+                ],
+                "cumulative_regret": (
+                    t * construction["ot"]["included_tail_regret"]
+                ),
+            },
             "transport": construction,
         },
         "claim_5": {
@@ -236,6 +251,20 @@ def evaluate_claims_4_and_5() -> dict:
             "cumulative_regret_before_tail_enters": scheduled_regret.tolist(),
             "observed_loglog_exponent_on_pre_entry_range": observed_exponent,
             "paper_exponent_q4": 5.0 / 9.0,
+            "alternative": {
+                "claim": (
+                    "For the audited finite coefficient sequence, the "
+                    "paper-derived tail inequality holds at q=1 and fails at "
+                    "every tested q in {2,4,8,16}."
+                ),
+                "q1_tail_bound_holds": q_sweep[0]["tail_bound_residual"] <= 0.0,
+                "q1_tail_bound_residual": q_sweep[0]["tail_bound_residual"],
+                "tested_q_ge_2_fail": all(
+                    item["tail_bound_residual"] > 0.0
+                    for item in q_sweep[1:]
+                ),
+                "tested_q_ge_2": [item["q"] for item in q_sweep[1:]],
+            },
             "finite_coefficient_tail_counterexample": {
                 "coefficients": coeff,
                 "L2_norm": norm,

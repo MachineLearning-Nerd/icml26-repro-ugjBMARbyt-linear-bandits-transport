@@ -1,8 +1,13 @@
 {
   "actual_ot_per_round_regret": 1.0,
+  "alternative_claim": "On the audited 3x3 instance, explicitly including every nonzero coefficient gives a zero coefficient tail and recovers the full-cost optimizer with zero regret.",
+  "alternative_cumulative_regret": 0.0,
+  "alternative_explicit_dimension": 3,
+  "alternative_verdict": "VERIFIED",
   "assumption_3_holds": true,
   "claim_id": 4,
   "cumulative_regret": 4096.0,
+  "failed_claim_target": "The Corollary 5.3 parenthetical equates the indicator condition with a zero coefficient tail.",
   "horizon": 4096,
   "independent_checker_exit_code": 0,
   "negative_control_failed_as_intended": true,

@@ -16,4 +16,11 @@ The RHS computation includes `sigma=1e-6`, `C_bar=1.5811388301`,
 Subtracting the comparator every round gives zero for a repeated optimal action
 and removes this contradiction.
 
+## Alternative verdict: VERIFIED
+
+On this audited nonconstant 2x2 instance, standard entropic regret subtracting
+the optimum every round is zero for the repeated exact entropic optimizer.
+The optimizer objective is recomputed from its plan; corrected regret and the
+printed-regret decomposition residual are both below `1e-12`.
+
 Evidence: `evidence/claim_2/`.

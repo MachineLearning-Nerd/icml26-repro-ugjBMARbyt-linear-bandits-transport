@@ -8,6 +8,15 @@
     3
   ],
   "agrees_falsified": true,
+  "agrees_paired": true,
+  "alternative": {
+    "coverage": 1.0,
+    "covered_noise_paths": 8,
+    "determinant_lemma_residual": 4.440892098500626e-16,
+    "required_coverage": 0.9,
+    "total_noise_paths": 8,
+    "verified": true
+  },
   "checker": "independent transport and shape construction",
   "feature_max_difference": 0.0,
   "features_identical": true,

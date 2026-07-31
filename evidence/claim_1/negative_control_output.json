@@ -4,5 +4,5 @@
   "observed_exit_code": 1,
   "passed": true,
   "stderr": "",
-  "stdout": "{\"agrees_falsified\": true, \"checker\": \"independent NumPy matrix construction\", \"identity_residual\": 0.5, \"input_norm_sq\": 1.0, \"isometry_residual\": 1.0, \"lhs\": 0.0, \"output_norm_sq\": 0.0, \"rhs_imag\": -6.123233995736766e-17, \"rhs_real\": 0.5}"
+  "stdout": "{\"agrees_falsified\": true, \"agrees_paired\": true, \"alternative\": {\"identity_residual\": 1.232595164407831e-32, \"isometry_residual\": 0.0, \"verified\": true}, \"checker\": \"independent NumPy matrix construction\", \"identity_residual\": 0.5, \"input_norm_sq\": 1.0, \"isometry_residual\": 1.0, \"lhs\": 0.0, \"output_norm_sq\": 0.0, \"rhs_imag\": -6.123233995736766e-17, \"rhs_real\": 0.5}"
 }

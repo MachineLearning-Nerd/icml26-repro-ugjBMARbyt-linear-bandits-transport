@@ -2,6 +2,15 @@
   "actual_tail_l1_at_n2": 1.632993161855452,
   "admitted_infinite_sequence_is_L2": true,
   "admitted_infinite_sequence_tail_l1_diverges": true,
+  "alternative_claim": "For the audited finite coefficient sequence, the paper-derived tail inequality holds at q=1 and fails at every tested q in {2,4,8,16}.",
+  "alternative_q1_tail_bound_residual": -0.0910202436093146,
+  "alternative_tested_q_ge_2": [
+    2.0,
+    4.0,
+    8.0,
+    16.0
+  ],
+  "alternative_verdict": "VERIFIED",
   "assumption_3_holds": true,
   "claim_id": 5,
   "finite_tail_bound_residual": 1.4174914861723562,

@@ -1,5 +1,18 @@
 {
   "agrees_falsified": true,
+  "alternatives": {
+    "claim_4_full_model_regret": 0.0,
+    "claim_4_zero_tail_after_dimension_3": true,
+    "claim_5_q1_holds": true,
+    "claim_5_q_residuals": {
+      "1": -0.0910202436093146,
+      "16": 1.6329405491416622,
+      "2": 0.7709864591230687,
+      "4": 1.4174914861723562,
+      "8": 1.6195243071252585
+    },
+    "claim_5_tested_q_ge_2_fail": true
+  },
   "checker": "independent enumeration of all 3! Birkhoff vertices",
   "full_optimum": [
     1,

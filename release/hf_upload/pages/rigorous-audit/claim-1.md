@@ -14,4 +14,11 @@ A corrected unitary finite-group transform reproduces the pairing, but changes
 the paper's normalization, frequencies, and measure representation. It is a
 repair control, not evidence for the literal statement.
 
+## Alternative verdict: VERIFIED
+
+On uniform `Z2 x Z2`, the normalized discrete Fourier transform preserves the
+`L2(rho)` norm and transport pairing when the coupling is represented by
+`d pi/d rho`. Pairing residual is below `1.3e-32`; isometry residual is `0`.
+An independent matrix checker reproduces both results.
+
 Evidence: `evidence/claim_1/`.

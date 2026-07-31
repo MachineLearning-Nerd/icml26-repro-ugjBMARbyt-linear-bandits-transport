@@ -1,4 +1,16 @@
 {
+  "alternative": {
+    "claim": "For the audited finite coefficient sequence, the paper-derived tail inequality holds at q=1 and fails at every tested q in {2,4,8,16}.",
+    "q1_tail_bound_holds": true,
+    "q1_tail_bound_residual": -0.0910202436093146,
+    "tested_q_ge_2": [
+      2.0,
+      4.0,
+      8.0,
+      16.0
+    ],
+    "tested_q_ge_2_fail": true
+  },
   "cumulative_regret_before_tail_enters": [
     15.0,
     31.0,

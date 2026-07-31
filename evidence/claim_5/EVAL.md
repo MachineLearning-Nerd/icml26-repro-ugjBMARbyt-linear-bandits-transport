@@ -7,3 +7,7 @@ paper-derived tail assertion and must reject the admitted finite sequence.
 
 The pre-entry slope is diagnostic only; it is not used by itself to assign the
 verdict.
+
+The paired alternative is `VERIFIED` only when the same finite sequence has a
+nonpositive tail-bound residual at `q=1`, positive residuals at every tested
+`q` in `{2,4,8,16}`, and the independent checker agrees.

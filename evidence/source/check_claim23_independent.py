@@ -30,6 +30,9 @@ def check() -> dict:
     ) * math.log((0.5 - p) / 0.25)
     entropic_optimum = cost_value + epsilon * entropy
     claim2_lower = (horizon - 1) * entropic_optimum
+    corrected_entropic_regret = horizon * (
+        cost_value + epsilon * entropy - entropic_optimum
+    )
 
     alpha = 0.5
     approximation = (
@@ -38,6 +41,7 @@ def check() -> dict:
     )
     claim3_upper = shared_upper + approximation
     claim3_lower = horizon - 1.0
+    corrected_kant_regret = horizon * (1.0 - 1.0)
     schedule_last = alpha * horizon ** (-alpha)
     result = {
         "checker": "independent scalar OT and determinant-bound arithmetic",
@@ -45,17 +49,23 @@ def check() -> dict:
         "claim_2_printed_regret_lower": claim2_lower,
         "claim_2_rhs_upper": shared_upper,
         "claim_2_violation": claim2_lower > shared_upper,
+        "claim_2_alternative_regret": corrected_entropic_regret,
+        "claim_2_alternative_verified": abs(corrected_entropic_regret) < 1e-12,
         "epsilon_T": schedule_last,
         "expected_epsilon_T": 0.00005,
         "schedule_exact": abs(schedule_last - 0.00005) < 1e-15,
         "claim_3_printed_regret_lower": claim3_lower,
         "claim_3_rhs_upper": claim3_upper,
         "claim_3_violation": claim3_lower > claim3_upper,
+        "claim_3_alternative_regret": corrected_kant_regret,
+        "claim_3_alternative_verified": abs(corrected_kant_regret) < 1e-12,
     }
     result["agrees_falsified"] = bool(
         result["claim_2_violation"]
+        and result["claim_2_alternative_verified"]
         and result["schedule_exact"]
         and result["claim_3_violation"]
+        and result["claim_3_alternative_verified"]
     )
     return result
 

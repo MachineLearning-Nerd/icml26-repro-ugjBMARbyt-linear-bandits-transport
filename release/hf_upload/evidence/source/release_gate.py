@@ -45,15 +45,17 @@ def _walk_logbook_files(node: dict) -> list[str]:
 def run_release_gate(root: Path) -> dict:
     upload = root / "release" / "hf_upload"
     evidence = upload / "evidence"
+    repository_evidence = root / "evidence"
     evidence.mkdir(parents=True, exist_ok=True)
 
     for claim in range(1, 7):
         source_dir = root / ".openresearch" / "artifacts" / f"claim_{claim}"
-        target_dir = evidence / f"claim_{claim}"
-        target_dir.mkdir(parents=True, exist_ok=True)
-        for source in sorted(source_dir.iterdir()):
-            if source.is_file() and source.suffix in TEXT_SUFFIXES:
-                _copy_text(source, target_dir / source.name)
+        for evidence_root in (repository_evidence, evidence):
+            target_dir = evidence_root / f"claim_{claim}"
+            target_dir.mkdir(parents=True, exist_ok=True)
+            for source in sorted(source_dir.iterdir()):
+                if source.is_file() and source.suffix in TEXT_SUFFIXES:
+                    _copy_text(source, target_dir / source.name)
 
     claim45_independent = (
         root
@@ -70,7 +72,11 @@ def run_release_gate(root: Path) -> dict:
         / "independent_checker_output.json"
     )
     _copy_text(claim45_independent, claim5_independent)
-    _copy_text(claim5_independent, evidence / "claim_5" / claim5_independent.name)
+    for evidence_root in (repository_evidence, evidence):
+        _copy_text(
+            claim5_independent,
+            evidence_root / "claim_5" / claim5_independent.name,
+        )
 
     source_files = [
         root / "repro" / "src" / "verify_entucb.py",
@@ -87,32 +93,36 @@ def run_release_gate(root: Path) -> dict:
         root / "pyproject.toml",
         root / "uv.lock",
     ]
-    for source in source_files:
-        _copy_text(source, evidence / "source" / source.name)
-    _copy_text(
-        root / ".python-version",
-        evidence / "source" / "python-version.txt",
-    )
-    _copy_text(
-        root / "reports" / "claim-by-claim" / "report.md",
-        evidence / "report" / "report.md",
-    )
-    _copy_text(
-        root / "notebooks" / "entucb_claim_audit.py",
-        evidence / "notebook" / "entucb_claim_audit.py",
-    )
-    _copy_text(
-        root / "release" / "commands_executed.md",
-        evidence / "release" / "commands_executed.md",
-    )
-    _copy_text(
-        root / "release" / "subset_check.json",
-        evidence / "release" / "subset_check.json",
-    )
-    _copy_text(
-        root / "release" / "protected_judged_manifest.sha256",
-        evidence / "release" / "protected_judged_manifest.txt",
-    )
+    for evidence_root in (repository_evidence, evidence):
+        for source in source_files:
+            _copy_text(source, evidence_root / "source" / source.name)
+        _copy_text(
+            root / ".python-version",
+            evidence_root / "source" / "python-version.txt",
+        )
+        _copy_text(
+            root / "reports" / "claim-by-claim" / "report.md",
+            evidence_root / "report" / "report.md",
+        )
+        _copy_text(
+            root / "notebooks" / "entucb_claim_audit.py",
+            evidence_root / "notebook" / "entucb_claim_audit.py",
+        )
+        _copy_text(
+            root / "release" / "commands_executed.md",
+            evidence_root / "release" / "commands_executed.md",
+        )
+        _copy_text(
+            root / "release" / "subset_check.json",
+            evidence_root / "release" / "subset_check.json",
+        )
+        _copy_text(
+            root / "release" / "protected_judged_manifest.sha256",
+            evidence_root / "release" / "protected_judged_manifest.txt",
+        )
+
+    for source in sorted((root / "pages").rglob("*.md")):
+        _copy_text(source, upload / source.relative_to(root))
 
     upload_files = sorted(path for path in upload.rglob("*") if path.is_file())
     decoded = {}
@@ -195,6 +205,7 @@ def run_release_gate(root: Path) -> dict:
             bad_images.append(f"{reference}: {error}")
 
     verdicts = {}
+    alternative_verdicts = {}
     missing_evidence = []
     required_names = {
         "claim_contract.json",
@@ -215,9 +226,13 @@ def run_release_gate(root: Path) -> dict:
         missing_evidence.extend(
             f"claim_{claim}/{name}" for name in sorted(required_names - present)
         )
-        verdicts[str(claim)] = json.loads(
+        verdict = json.loads(
             (claim_dir / "verdict.json").read_text(encoding="utf-8")
-        )["verdict"]
+        )
+        verdicts[str(claim)] = verdict["verdict"]
+        alternative_verdicts[str(claim)] = verdict.get(
+            "alternative_verdict", "MISSING"
+        )
 
     subset_path = root / "release" / "subset_check.json"
     if subset_path.exists():
@@ -240,6 +255,7 @@ def run_release_gate(root: Path) -> dict:
             not bad_images,
             not missing_evidence,
             set(verdicts.values()) == {"FALSIFIED"},
+            set(alternative_verdicts.values()) == {"VERIFIED"},
         ]
     )
     gate_ready = internal_ready and bool(subset_check.get("passed"))
@@ -248,6 +264,7 @@ def run_release_gate(root: Path) -> dict:
         "internal_ready": internal_ready,
         "gate_ready": gate_ready,
         "claim_verdicts": verdicts,
+        "alternative_claim_verdicts": alternative_verdicts,
         "upload_file_count": len(upload_files),
         "upload_manifest_sha256": _sha256(manifest_path),
         "allowlist_sha256": _sha256(allowlist_path),

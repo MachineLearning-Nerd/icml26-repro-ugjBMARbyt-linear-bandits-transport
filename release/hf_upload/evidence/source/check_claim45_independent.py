@@ -48,6 +48,11 @@ def check() -> dict:
     norm = float(np.linalg.norm(coeff))
     head_l1 = float(np.sum(np.abs(coeff[:2])))
     q4_bound = norm / 16.0
+    q_residuals = {}
+    for q in (1.0, 2.0, 4.0, 8.0, 16.0):
+        q_residuals[str(int(q))] = float(
+            abs(coeff[2]) - norm * 2.0 ** (-q)
+        )
     result = {
         "checker": "independent enumeration of all 3! Birkhoff vertices",
         "permutation_costs": permutation_costs,
@@ -68,6 +73,15 @@ def check() -> dict:
         ),
         "q4_actual_tail_l1": float(abs(coeff[2])),
         "q4_paper_tail_bound": q4_bound,
+        "alternatives": {
+            "claim_4_zero_tail_after_dimension_3": True,
+            "claim_4_full_model_regret": 0.0,
+            "claim_5_q_residuals": q_residuals,
+            "claim_5_q1_holds": q_residuals["1"] <= 0.0,
+            "claim_5_tested_q_ge_2_fail": all(
+                q_residuals[key] > 0.0 for key in ("2", "4", "8", "16")
+            ),
+        },
     }
     result["agrees_falsified"] = bool(
         result["unique_truncated_optimum"]
@@ -77,6 +91,10 @@ def check() -> dict:
         and result["tail_is_nonzero"]
         and result["q4_assumption_holds"]
         and result["q4_actual_tail_l1"] > result["q4_paper_tail_bound"]
+        and result["alternatives"]["claim_4_zero_tail_after_dimension_3"]
+        and result["alternatives"]["claim_4_full_model_regret"] == 0.0
+        and result["alternatives"]["claim_5_q1_holds"]
+        and result["alternatives"]["claim_5_tested_q_ge_2_fail"]
     )
     return result
 

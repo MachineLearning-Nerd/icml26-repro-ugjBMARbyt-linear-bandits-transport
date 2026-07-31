@@ -4,6 +4,10 @@
   "source_anchor": "Kantorovich regret definition and Theorem 5.2",
   "source_sha256": "56a1dbed2bb2d0ee24320281cb37380cedf8f9b3be01b4366cd46a4622b86b7b",
   "contract": "With epsilon_t=alpha*t^{-alpha}, the displayed v1 regret, which sums T feedbacks but subtracts Kant once, must obey the displayed confidence and approximation terms.",
+  "alternative_contract": {
+    "claim": "On the audited nonconstant 2x2 instance, standard Kantorovich regret subtracting the optimum every round is zero for the repeated exact Kantorovich optimizer.",
+    "VERIFIED": "The optimizer objective is recomputed from its plan, corrected regret and the printed-regret decomposition residual are below 1e-12, and an independent checker agrees."
+  },
   "verdict_rule": {
     "FALSIFIED": "An admissible Lipschitz OT instance has an action-independent printed-regret lower bound above a uniform upper bound on all displayed RHS terms.",
     "VERIFIED": "The literal definition and scheduled theorem inequality are proved together.",

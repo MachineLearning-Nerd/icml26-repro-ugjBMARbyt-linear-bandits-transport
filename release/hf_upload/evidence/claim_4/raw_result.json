@@ -1,6 +1,13 @@
 {
   "N": 2,
   "actual_cumulative_regret": 4096.0,
+  "alternative": {
+    "claim": "On the audited 3x3 instance, explicitly including every nonzero coefficient gives a zero coefficient tail and recovers the full-cost optimizer with zero regret.",
+    "cumulative_regret": 0.0,
+    "explicit_dimension": 3,
+    "per_round_regret": 0.0,
+    "tail_l1_after_dimension": 0.0
+  },
   "assumption_3_on_integer_orders": true,
   "horizon": 4096,
   "omitted_nonzero_coefficients": [

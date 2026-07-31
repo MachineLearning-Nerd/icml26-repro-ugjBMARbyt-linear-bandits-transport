@@ -8,18 +8,19 @@ This additive audit replaces no prior page. It evaluates the exact statements
 in arXiv `2502.07397v1`, the source version matched by the judge. Current arXiv
 v2 changes theorem numbering and some rates.
 
-| Claim | Verdict | Decisive observation |
+| Claim | Failed claim | Different claim that holds |
 |---|---|---|
-| 1 | FALSIFIED | Equation (7) gives `0` versus `1/2` on an admitted coupling |
-| 2 | FALSIFIED | printed regret lower `113.7M` exceeds complete RHS upper `0.399M` |
-| 3 | FALSIFIED | exact entropy schedule; printed lower `100.0M` exceeds RHS upper `0.583M` |
-| 4 | FALSIFIED | admitted basis tail changes a real 3×3 OT optimum; regret `1/round` |
-| 5 | FALSIFIED | admitted tail `1.633` exceeds asserted bound `0.216` |
-| 6 | FALSIFIED | identical Fourier features have expected feedback `0` and `1` |
+| 1 | `FALSIFIED`: Equation (7) residual `1/2` | `VERIFIED`: normalized finite-group identity residual `1.23e-32` |
+| 2 | `FALSIFIED`: printed regret lower `113.7M` > RHS `0.399M` | `VERIFIED`: standard repeated-optimum regret `0` |
+| 3 | `FALSIFIED`: printed lower `100.0M` > RHS `0.583M` | `VERIFIED`: standard repeated-optimum regret `0` |
+| 4 | `FALSIFIED`: integer-order condition permits a nonzero tail | `VERIFIED`: explicit full model has tail and regret `0` |
+| 5 | `FALSIFIED`: at `q=4`, tail `1.633` > bound `0.216` | `VERIFIED`: at `q=1`, residual `-0.091` |
+| 6 | `FALSIFIED`: feature collision and ill-typed width | `VERIFIED`: corrected determinant residual `4.44e-16`, coverage `8/8` |
 
 Every claim page links to text-only contracts, raw JSON, independent checker
 output, negative-control output, environment provenance, and source code under
-`evidence/`. `FALSIFIED` is used only for a counterexample satisfying the
-literal source assumptions. Corrected controls are reported separately.
+`evidence/`. `FALSIFIED` is used only for an exact failed contract;
+`VERIFIED` is used only for the separately stated alternative contract.
 
-No live judge score increase is claimed by this candidate.
+The prior judged paths remain present. No live judge score increase is claimed
+before re-evaluation.

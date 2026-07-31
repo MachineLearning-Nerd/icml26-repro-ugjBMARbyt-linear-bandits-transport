@@ -1,9 +1,13 @@
 {
   "agrees_falsified": true,
   "checker": "independent scalar OT and determinant-bound arithmetic",
+  "claim_2_alternative_regret": 0.0,
+  "claim_2_alternative_verified": true,
   "claim_2_printed_regret_lower": 113728635.50413018,
   "claim_2_rhs_upper": 398538.21291818883,
   "claim_2_violation": true,
+  "claim_3_alternative_regret": 0.0,
+  "claim_3_alternative_verified": true,
   "claim_3_printed_regret_lower": 99999999.0,
   "claim_3_rhs_upper": 582745.653840348,
   "claim_3_violation": true,

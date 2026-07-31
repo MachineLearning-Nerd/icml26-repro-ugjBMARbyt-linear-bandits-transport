@@ -1,5 +1,9 @@
 {
   "alpha": 0.5,
+  "alternative_claim": "On the audited nonconstant 2x2 instance, standard Kantorovich regret subtracting the optimum every round is zero for the repeated exact Kantorovich optimizer.",
+  "alternative_corrected_regret": 0.0,
+  "alternative_decomposition_residual": 0.0,
+  "alternative_verdict": "VERIFIED",
   "approximation_term": 184207.44092215915,
   "claim_id": 3,
   "epsilon_T": 5e-05,

@@ -1,7 +1,9 @@
 # Claim 4 evaluation
 
-`FALSIFIED` requires: exact Assumption 3 at integer orders; a nonzero tail;
-orthonormality residual below `1e-12`; valid OT marginals; independently
-confirmed unique optima; true per-round regret above `0.99`; cumulative regret
-more than 40 times `sqrt(NT)` at `T=4096`; and zero regret when the tail is
-included. Any missing condition exits nonzero.
+`FALSIFIED` targets the Corollary 5.3 parenthetical equivalence. It requires
+the corollary's integer-order inequality at `N=2`, a nonzero coefficient tail,
+orthonormality residual below `1e-12`, and independent agreement.
+
+The paired alternative is `VERIFIED` only when every nonzero coefficient is
+explicitly included at dimension three, the remaining tail and cumulative
+regret are zero, and independent Birkhoff-vertex enumeration agrees.

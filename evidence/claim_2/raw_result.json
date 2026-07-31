@@ -11,7 +11,12 @@
     "zero_noise_is_sigma_squared_sub_gaussian": true
   },
   "claim_2": {
-    "corrected_repeated_optimum_regret": 0.0,
+    "alternative": {
+      "claim": "On the audited nonconstant 2x2 instance, standard entropic regret subtracting the optimum every round is zero for the repeated exact entropic optimizer.",
+      "corrected_repeated_optimum_regret": 0.0,
+      "printed_regret_decomposition_residual": 0.0,
+      "recomputed_repeated_objective": 1.1372863664141655
+    },
     "paper_regret_definition": "sum_t (R_t+epsilon H(pi_t|rho)) - Ent",
     "printed_regret_lower_for_every_action_sequence": 113728635.50413018,
     "theorem_rhs_upper_for_every_action_sequence": 398538.21291818883,

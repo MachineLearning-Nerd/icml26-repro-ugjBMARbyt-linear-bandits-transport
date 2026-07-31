@@ -1,4 +1,7 @@
 {
+  "alternative_claim": "On the audited 4-parameter, 3-observation linear control, the corrected observation-space OFUL determinant matches the parameter-space determinant and its radius covers every enumerated Rademacher path.",
+  "alternative_determinant_lemma_residual": 4.440892098500626e-16,
+  "alternative_verdict": "VERIFIED",
   "assumptions_satisfied": true,
   "claim_id": 6,
   "corrected_formula_exact_coverage": 1.0,
